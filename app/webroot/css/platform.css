@@ -85,6 +85,10 @@ form label.radio {
 	font-size:100%;
 }
 
+.news .alert .img-thumbnail {
+	margin-right:1em;
+}
+
 /* Calendar classes */
 .calendar .red, .calendar .red a:link{
 	background-color:#FF0000;

@@ -21,15 +21,12 @@
 <?php
 	$mainnewswidget = $this->requestAction('/news/news_widget/limit:3');
 	if ($mainnewswidget != "") { ?>
-	<div class="news">
-	<h3>
-		<?php 
-			echo $this->Html->link(__('News and Updates'), '/news/index', array('target' => '_self')); 
-		?>
-	</h3>
+	<div class="row">
+	<div class="col-md-12">
 	<?php
 		echo $mainnewswidget;
 	?>
+	</div>
 	</div>
 	<?php } ?>
 
