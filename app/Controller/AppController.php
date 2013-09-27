@@ -216,7 +216,8 @@ class AppController extends Controller {
 						'url' => array(
 								'plugin' => 'standard_profile_module',
 								'controller' => 'profile',
-								'action' => 'index')),
+								'action' => 'index',
+								'admin' => false)),
 					array (
 							'separator' => '<li class="divider"></li>'));
 				foreach ($userModules as $userModule):
