@@ -1,9 +1,8 @@
-<div class="module-title">
-	<h1><?php echo $this->Html->image('/img/Apps-system-users-icon.png', array('alt' => "Admin Panel icon", 'escape' => false, 'class'=> 'icon'));?>
+<h1 class="module-title"><?php echo $this->Html->image('/img/Apps-system-users-icon.png', array('alt' => "Admin Panel icon", 'escape' => false, 'class'=> 'img-thumbnail'));?>
 Admin Panel - View User</h1>
-</div>
-<div class="users view">
-	<dl>
+<div class="row">
+<div class="col-md-9 col-md-push-3">
+	<dl class="dl-horizontal">
 		<dt><?php echo __('Id'); ?></dt>
 		<dd>
 			<?php echo h($viewuser['User']['id']); ?>
@@ -57,7 +56,7 @@ Admin Panel - View User</h1>
 			&nbsp;
 		</dd>
 	</dl>
-	<p style="margin-top:1em;">
+	<p class="top-buffer bot-buffer">
 		<?php if($viewuser['Profile']['allow_research']) {
 			echo "This user's information MAY be used for research into improving health";
 		} else {
@@ -66,12 +65,14 @@ Admin Panel - View User</h1>
 		?>
 	</p>
 </div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
-		<li><?php echo $this->Html->link(__('Edit user'), array('action' => 'edit', $viewuser['User']['id'])); ?> </li>
-		<li><?php echo $this->Form->postLink(__('Delete user'), array('action' => 'delete', $viewuser['User']['id']), null, __('Are you sure you want to delete user #%s?', $viewuser['User']['id'])); ?> </li>
-		<li><?php echo $this->Html->link(__('List users'), array('action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('Admin panel'), '/admin_panel'); ?></li>
-	</ul>
+<div class="col-md-3 col-md-pull-9">
+	<div class="list-group">
+		<?php 
+			echo $this->Html->link(__('Edit user'), array('action' => 'edit', $viewuser['User']['id']), array('class' => 'list-group-item'));
+			echo $this->Form->postLink(__('Delete user'), array('action' => 'delete', $viewuser['User']['id']), array('class' => 'list-group-item'), __('Are you sure you want to delete user #%s?', $viewuser['User']['id']));
+			echo $this->Html->link(__('List users'), array('action' => 'index'), array('class' => 'list-group-item'));
+			echo $this->Html->link(__('Admin panel'), '/admin_panel', array('class' => 'list-group-item'));
+		?>
+	</div>
+</div>
 </div>

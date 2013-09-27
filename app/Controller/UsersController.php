@@ -290,7 +290,7 @@ class UsersController extends AppController {
 			}
 				
 			if ($this->User->saveAssociated($this->request->data)) {
-				$this->Session->setFlash(__('The user&rsquo;s profile has been updated.'));
+				$this->Session->setFlash('The user&rsquo;s profile has been updated.', 'default', array('class' => 'alert alert-success'));
 				$this->redirect(array('action' => 'view',$id));
 			} else {
 				$this->Session->setFlash(__('The user&rsquo;s profile could not be saved. Please, try again.'));
@@ -310,7 +310,7 @@ class UsersController extends AppController {
 		}
 		//$this->request->onlyAllow('user', 'delete');
 		if ($this->User->delete($id)) {
-			$this->Session->setFlash(__('User deleted'));
+			$this->Session->setFlash('User deleted', 'default', array('class' => 'alert alert-success'));
 			$this->redirect(array('action' => 'index'));
 		}
 		$this->Session->setFlash(__('User was not deleted'));
