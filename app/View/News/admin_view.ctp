@@ -1,9 +1,8 @@
-<div class="module-title">
-	<h1><?php echo $this->Html->image('/img/Mimetypes-message-news-icon.png', array('alt' => "Admin Panel News icon", 'escape' => false, 'class'=> 'icon'));?>
+<h1 class="module-title"><?php echo $this->Html->image('/img/Mimetypes-message-news-icon.png', array('alt' => "Admin Panel News icon", 'escape' => false, 'class'=> 'img-thumbnail'));?>
 Admin Panel - View News</h1>
-</div>
-<div class="adminnews view">
-<dl>
+<div class="row">
+<div class="col-md-9 col-md-push-3">
+	<dl class="dl-horizontal">
 		<dt><?php echo __('Id'); ?></dt>
 		<dd>
 			<?php echo h($news['News']['id']); ?>
@@ -31,13 +30,15 @@ Admin Panel - View News</h1>
 		</dd>
 	</dl>
 </div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
-		<li><?php echo $this->Html->link(__('Edit news'), array('action' => 'edit', $news['News']['id'])); ?> </li>
-		<li><?php echo $this->Form->postLink(__('Delete news'), array('action' => 'delete', $news['News']['id']), null, __('Are you sure you want to delete # %s?', $news['News']['id'])); ?> </li>
-		<li><?php echo $this->Html->link(__('Add news'), array('action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('News list'), '/admin/news'); ?></li>
-		<li><?php echo $this->Html->link(__('Admin panel'), '/admin_panel'); ?></li>
-	</ul>
+<div class="col-md-3 col-md-pull-9">
+	<div class="list-group">
+		<?php
+			echo $this->Html->link(__('Edit news'), array('action' => 'edit', $news['News']['id']), array('class' => 'list-group-item'));
+			echo $this->Form->postLink(__('Delete news'), array('action' => 'delete', $news['News']['id']), array('class' => 'list-group-item'), __('Are you sure you want to delete # %s?', $news['News']['id']));
+			echo $this->Html->link(__('Add news'), array('action' => 'add'), array('class' => 'list-group-item'));
+			echo $this->Html->link(__('News list'), '/admin/news', array('class' => 'list-group-item'));
+			echo $this->Html->link(__('Admin panel'), '/admin_panel', array('class' => 'list-group-item'));
+		?>
+	</div>
+</div>
 </div>
