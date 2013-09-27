@@ -1,5 +1,6 @@
-<div class="modules view">
-	<dl>
+<div class="row">
+<div class="col-md-9 col-md-push-3">
+	<dl class="dl-horizontal">
 		<dt><?php echo __('Module name'); ?></dt>
 		<dd>
 			<?php echo $module['Module']['name']; ?>
@@ -25,10 +26,12 @@
 		</dd>
 	</dl>
 </div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
-		<li><?php echo $this->Html->link(__('Export reasons'), array('action' => 'export_reasons')); ?> </li>
-		<li><?php echo $this->Html->link(__('Admin panel'), '/admin_panel'); ?></li>
-	</ul>
+<div class="col-md-3 col-md-pull-9">
+	<div class="list-group">
+		<?php
+			echo $this->Html->link(__('Export reasons'), array('action' => 'export_reasons'), array('class' => 'list-group-item'));
+			echo $this->Html->link(__('Admin panel'), '/admin_panel', array('class' => 'list-group-item'));
+		?>
+	</div>
+</div>
 </div>

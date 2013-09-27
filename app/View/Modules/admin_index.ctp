@@ -1,9 +1,9 @@
-<div class="module-title">
-	<h1><?php echo $this->Html->image('/img/Actions-view-list-icons-icon.png', array('alt' => "Admin Panel - Modules icon", 'escape' => false, 'class'=> 'icon'));?>
+<h1 class="module-title"><?php echo $this->Html->image('/img/Actions-view-list-icons-icon.png', array('alt' => "Admin Panel - Modules icon", 'escape' => false, 'class'=> 'img-thumbnail'));?>
 Admin Panel - Modules</h1>
-</div>
-<div class="modules index">
-	<table>
+<div class="row">
+<div class="col-md-9 col-md-push-3">
+	<table class="table">
+	<thead>
 	<tr>
 			<th><?php echo $this->Paginator->sort('id'); ?></th>
 			<th><?php echo $this->Paginator->sort('name'); ?></th>
@@ -13,6 +13,8 @@ Admin Panel - Modules</h1>
 			<th><?php echo __('No. of users'); ?></th>
 			<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
+	</thead>
+	<tbody>
 	<?php foreach ($modules as $module): ?>
 	<tr>
 		<td><?php echo h($module['Module']['id']); ?>&nbsp;</td>
@@ -30,18 +32,21 @@ Admin Panel - Modules</h1>
 			} else {
 				echo count($module['ModuleUser']); 
 			}?>&nbsp;</td>
-		<td class="actions">
-			<?php echo $this->Html->link(__('Health data'), '/admin_panel/health_data/'. $module['Module']['id']); ?>
+		<td class="col-md-5">
+			<span class="btn-group btn-group-justified">
+			<?php echo $this->Html->link(__('Health data'), '/admin_panel/health_data/'. $module['Module']['id'], array('class' => 'btn btn-default')); ?>
 			<?php
 			if($module['Module']['active']) {
-				echo $this->Form->postLink(__('De-activate'), array('action' => 'activate', $module['Module']['id'], 0), null, __('Are you sure you want to de-activate module #%s?', $module['Module']['id']));
+				echo $this->Form->postLink(__('De-activate'), array('action' => 'activate', $module['Module']['id'], 0), array('class' => 'btn btn-default'), __('Are you sure you want to de-activate module #%s?', $module['Module']['id']));
 			} else {
-				echo $this->Html->link(__('Activate'), array('action' => 'activate', $module['Module']['id'], 1));
-				echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $module['Module']['id']), null, __('Are you sure you want to delete module #%s? All health data will also be deleted...', $module['Module']['id']));
+				echo $this->Html->link(__('Activate'), array('action' => 'activate', $module['Module']['id'], 1), array('class' => 'btn btn-default'));
+				echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $module['Module']['id']), array('class' => 'btn btn-default'), __('Are you sure you want to delete module #%s? All health data will also be deleted...', $module['Module']['id']));
 			}?>
+			</span>
 		</td>
 	</tr>
 <?php endforeach; ?>
+	</tbody>
 	</table>
 	<p>
 	<?php
@@ -49,18 +54,18 @@ Admin Panel - Modules</h1>
 	'format' => __('Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}')
 	));
 	?>	</p>
-	<div class="paging">
+	<ul class="pagination">
 	<?php
-		echo $this->Paginator->prev('< ' . __('previous'), array(), null, array('class' => 'prev disabled'));
+		echo $this->Paginator->prev(' < ' . __('previous'), array(), null, array('class' => 'prev disabled'));
 		echo $this->Paginator->numbers(array('separator' => ''));
 		echo $this->Paginator->next(__('next') . ' >', array(), null, array('class' => 'next disabled'));
 	?>
+	</ul>
+</div>
+<div class="col-md-3 col-md-pull-9">
+	<div class="list-group">
+		<?php echo $this->Html->link(__('Add module'), array('action' => 'add'), array('class' => 'list-group-item')); ?>
+		<?php echo $this->Html->link(__('Admin panel'), '/admin_panel', array('class' => 'list-group-item')); ?>
 	</div>
 </div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
-		<li><?php echo $this->Html->link(__('Add module'), array('action' => 'add')); ?></li>
-		<li><?php echo $this->Html->link(__('Admin panel'), '/admin_panel'); ?></li>
-	</ul>
 </div>
