@@ -1,5 +1,6 @@
 <?php
 App::uses('StandardProfileModuleAppModel', 'StandardProfileModule.Model');
+App::uses('CakeTime', 'Utility');
 /**
  * Profile Model
  *
@@ -59,8 +60,18 @@ class Profile extends StandardProfileModuleAppModel {
 					'allowEmpty' => false
 			),
 			'date_of_birth' => array(
+				'date' => array(
 					'rule' => 'date',
 					'message' => 'Please enter your date of birth'
+			),
+				'daterange' => array(
+					'rule' => 'ninetyYearsRule',
+					'message' => 'The date of birth has to be within the last 90 years'
+				),
+				'daterange2' => array(
+					'rule' => 'eighteenYearsRule',
+					'message' => 'You have to be over 18 to use this website'
+				) 
 			),
 			'gender' => array(
 					'valid' => array(
@@ -74,4 +85,29 @@ class Profile extends StandardProfileModuleAppModel {
 					'message' => 'Incorrect value for research approval'
 			)
 	);
+	
+	public function ninetyYearsRule($myfield){
+		
+		$dob = $this->data['Profile']['date_of_birth']; 
+		list($year,$month,$day) = explode('-',$dob,3);
+		$date = mktime(0,0,0,$month,$day,$year);
+	
+		$olddate = mktime(0,0,0,date("m"),date("d"),date("Y")-90);
+	
+		return $date > $olddate;
+	}
+	
+	public function eighteenYearsRule($myfield){
+		
+		// get the selected date of birth
+		$dob = $this->data['Profile']['date_of_birth']; 
+		list($year,$month,$day) = explode('-',$dob,3);
+		$date = mktime(0,0,0,$month,$day,$year);
+		
+		// Get the cut off date for 18 year olds
+		$youngdate = mktime(0,0,0,date("m"),date("d"),date("Y")-18);
+		
+		return $date < $youngdate;
+		
+	}
 }
