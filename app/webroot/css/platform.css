@@ -1,8 +1,7 @@
 @CHARSET "ISO-8859-1";
 
 body {
-	background-color: #CCCCCC;
-	background-image: url('/img/noisy-texture-100x100-o8-d19-c-CCCCCC-t0.png')
+	background: #CCCCCC url('/img/noisy-texture-100x100-o8-d19-c-CCCCCC-t0.png') fixed repeat;
 }
 
 .wrapper {
