@@ -28,26 +28,27 @@ $cakeDescription = __d('cake_dev', 'Experimental Platform for Health Promotion')
 		<?php echo $cakeDescription ?>
 	</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<?php
 		//echo $this->Html->meta('icon');
 
-		echo $this->Html->css('http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css');
-		echo $this->Html->css('http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-theme.min.css');
+		echo $this->Html->css('bootstrap/bootstrap.min.css');
+		echo $this->Html->css('bootstrap/bootstrap-theme.min.css');
 	
-		//echo $this->Html->css('cake.generic');
-		//echo $this->Html->css('1053');
-
 		echo $this->Html->css('platform');
 		echo $this->Html->script('http://code.jquery.com/jquery-latest.min.js');
 		echo $this->Html->script('http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js');
 		echo $this->Html->script('jquery-ui-1.10.3.custom/js/jquery-ui-1.10.3.custom.min.js');
 		echo $this->Html->script('platform.js');
 		echo $this->Html->css('ui-lightness/jquery-ui-1.10.3.custom.css');
-
+		
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
 		echo $this->fetch('script');
 	?>
+	<!--[if lt IE 9]>
+    	<script src="/js/respond.min.js"></script>
+	<![endif]-->
 </head>
 <body>
 	<div class="container wrapper" id="top">
