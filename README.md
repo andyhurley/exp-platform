@@ -50,3 +50,12 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+### Additional restriction
+
+An additional restriction has been applied to this software:
+
+* Any data collected using this platform will be provided without charge (after being anonymised) to the
+developers for research purposes.
+
+Please get in touch for more detail regarding this additional restriction.
