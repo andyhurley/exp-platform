@@ -17,12 +17,12 @@ The platform has been built and designed by:
 * Andy Hurley, [It's All Nice](http://itsallnice.co.uk)
 * David Burton, [Doive Designs](http://www.doivedesigns.co.uk)
 
-Many thanks to the contributions from the team at Public Health Wales, particularly:
+Many thanks for the ideas, contributions, from the team at Public Health Wales, particularly:
 
-* Hugo van Woerden
-* Christopher Garlick
+* Dr. Hugo van Woerden, Director of Innovation and Development, Public Health Wales
+* Chris Garlick, Workplace Health Practitioner, Healthy Working Wales, Public Health Wales
 
-# License
+## License
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
