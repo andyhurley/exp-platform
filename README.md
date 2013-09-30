@@ -17,7 +17,7 @@ The platform has been built and designed by:
 * Andy Hurley, [It's All Nice](http://itsallnice.co.uk)
 * David Burton, [Doive Designs](http://www.doivedesigns.co.uk)
 
-Many thanks for the ideas, contributions, from the team at Public Health Wales, particularly:
+Many thanks for the ideas, contributions and guidance from the team at Public Health Wales, particularly:
 
 * Dr. Hugo van Woerden, Director of Innovation and Development, Public Health Wales
 * Chris Garlick, Workplace Health Practitioner, Healthy Working Wales, Public Health Wales
