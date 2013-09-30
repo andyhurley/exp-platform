@@ -10,17 +10,31 @@ The initial platform has been based on the website developed for NHS Wales'
 
 * CakePHP >= 2.4
 
-## Author
+## Authors
 
 The platform has been built and designed by:
 
 * Andy Hurley, [It's All Nice](http://itsallnice.co.uk)
 * David Burton, [Doive Designs](http://www.doivedesigns.co.uk)
 
+## Acknowledgements
+
 Many thanks for the ideas, contributions and guidance from the team at Public Health Wales, particularly:
 
 * Dr. Hugo van Woerden, Director of Innovation and Development, Public Health Wales
 * Chris Garlick, Workplace Health Practitioner, Healthy Working Wales, Public Health Wales
+
+This platform makes use of the following external plugins, images and components. It couldn't
+be done without these guys!
+
+* [Bootstrap](http://getbootstrap.com/)
+* [BoostCake - Bootstrap Plugin for CakePHP](http://slywalker.github.io/cakephp-plugin-boost_cake/)
+* [MenuBuilder](http://github.com/torifat/cake-menu_builder/)
+* [PHP OpenID library by JanRain, Inc](http://janrain.com/openid-enabled/)
+* [JpGraph](http://jpgraph.net/)
+* [AuthButtons](https://github.com/intridea/authbuttons)
+* [Oxygen Icons](http://www.oxygen-icons.org/)
+* [Glyphicons](http://glyphicons.com/)
 
 ## License
 
