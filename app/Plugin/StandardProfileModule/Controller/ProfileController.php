@@ -174,6 +174,7 @@ class ProfileController extends StandardProfileModuleAppController implements Mo
   		if ($this->request->is('post') || $this->request->is('put')) {
   			// Get user id from current user session, rather than from form
   			$this->request->data['User']['id'] = $currentUser['User']['id'];
+  			$this->request->data['User']['email'] = $currentUser['User']['email'];
   			$this->request->data['Profile']['user_id'] = $currentUser['User']['id'];
   				
   			if ($this->User->saveAssociated($this->request->data)) {
@@ -197,6 +198,7 @@ class ProfileController extends StandardProfileModuleAppController implements Mo
   			}
   		} else {
   			$this->request->data = $currentUser;
+			$this->request->data['Profile']['date_of_birth'] = mktime(0,0,0,date("m")-1,date("d"),date("Y")-18);
   		}
   		$this->set('title_for_layout', 'Set Up My Profile');
   	}
