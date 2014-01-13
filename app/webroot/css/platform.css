@@ -1,12 +1,20 @@
 @CHARSET "ISO-8859-1";
 
 body {
+<<<<<<< HEAD
 	background-color: #F0F4FA;
+=======
+	background: #CCCCCC url('/img/noisy-texture-100x100-o8-d19-c-CCCCCC-t0.png') fixed repeat;
+>>>>>>> origin/master
 }
 
 .wrapper {
 	background-color: #ffffff;
+<<<<<<< HEAD
 	box-shadow:  0 1px 0 rgba(255, 255, 255, 0.15) inset, 0 1px 5px rgba(0, 0, 0, 0.075);
+=======
+	box-shadow:  0 0 1em #000000;
+>>>>>>> origin/master
 }
 
 h1 {
@@ -54,6 +62,13 @@ form label.radio {
 	font-weight:normal;
 }
 
+<<<<<<< HEAD
+=======
+.navbar {
+	filter:none!important;
+}
+
+>>>>>>> origin/master
 /* Dashboard panels */
 .panel-heading .panel-title img {
 	margin-right:10px;
