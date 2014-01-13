@@ -30,7 +30,7 @@
 	</div>
 	<?php } ?>
 
-<div class="row">
+<div class="row" id="panel-container">
 <?php 
 	if (empty($userModules)) {?>
 		<div class="col-md-12">
@@ -73,7 +73,7 @@
 		foreach ($userModules as $module):
 			$widget = $this->requestAction($module['Modules']['base_url'].'/dashboard_widget'); 
 			?>
-			<div class="col-md-6">
+			<div class="col-md-6 panel-item">
 				<div class='panel panel-primary' id="<?php echo Inflector::slug($module['Modules']['name']); ?>">
 					<div class="panel-heading">
    						<h3 class="panel-title">

@@ -1,7 +1,7 @@
 <h1 class="module-title"><?php echo $this->Html->image('/img/Categories-applications-system-icon.png', array('alt' => "Admin Panel icon", 'escape' => false, 'class'=> 'img-thumbnail'));?>
 Admin Panel</h1>
-<div class="row">
-	<div class="col-md-6">
+<div class="row" id="panel-container">
+	<div class="col-md-6 panel-item">
 		<div class='panel panel-primary achievements'>
 		<div class="panel-heading">
 			<h3 class="panel-title"><?php 
@@ -29,7 +29,7 @@ Admin Panel</h1>
 		</div>
 		</div>
 	</div>
-	<div class="col-md-6">
+	<div class="col-md-6 panel-item">
 		<div class='panel panel-primary achievements'>
 		<div class="panel-heading">
 			<h3 class="panel-title"><?php 
@@ -61,7 +61,7 @@ Admin Panel</h1>
 		</div>
 		</div>
 	</div>
-	<div class="col-md-6">
+	<div class="col-md-6 panel-item">
 		<div class='panel panel-primary achievements'>
 		<div class="panel-heading">
 			<h3 class="panel-title"><?php 

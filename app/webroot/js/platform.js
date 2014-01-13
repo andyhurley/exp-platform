@@ -13,6 +13,14 @@ $(document).ready(function() {
 	// Match all .info <a/> links with a title tag and convert to a qtip.
 	$('a.info[title]').tooltip();
 	$('a.infohover[title]').tooltip();
+	
+	$container = $('#panel-container');
+	$container.imagesLoaded( function() {
+		$container.masonry({
+			itemSelector: '.panel-item',
+			columnWidth: '.panel-item'
+		});
+	});
 });
 
 function getImperialHeight(cms)

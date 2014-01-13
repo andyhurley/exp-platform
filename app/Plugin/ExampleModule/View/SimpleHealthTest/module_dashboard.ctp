@@ -11,8 +11,8 @@ if ($newswidget != "") echo $newswidget;
 ?>
 </div>
 
-<div class="row">
-	<div class="col-md-6">
+<div class="row" id="panel-container">
+	<div class="col-md-6 panel-item">
 		<div class='panel panel-primary'>
 		<div class="panel-heading">
 			<h3 class="panel-title">
@@ -43,7 +43,7 @@ if ($newswidget != "") echo $newswidget;
 		</div>
 		</div>
 	</div>
-	<div class="col-md-6">
+	<div class="col-md-6 panel-item">
 		<div class='panel panel-primary'>
 		<div class="panel-heading">
 			<h3 class="panel-title"><?php echo $this->Html->image('/img/Actions-view-calendar-icon.png', array('alt' => "Calendar icon", 'escape' => false, 'class'=> 'img-thumbnail', 'url'=>array('action' => 'view_records')));
@@ -59,7 +59,7 @@ if ($newswidget != "") echo $newswidget;
 		</div>
 		</div>
 	</div>
-	<div class="col-md-6">
+	<div class="col-md-6 panel-item">
 		<div class='panel panel-primary achievements'>
 		<div class="panel-heading">
 			<h3 class="panel-title"><?php echo $this->Html->image('/img/Actions-rating-icon.png', array('alt' => "Star icon", 'escape' => false, 'class'=> 'img-thumbnail', 'url'=>array('action' => 'view_records')));

@@ -77,6 +77,15 @@ form label.radio {
 	margin:0 auto;
 }
 
+.panel-item {
+	width: 50%;
+}
+
+@media screen and (max-width: 767px) {
+  /* 100% for smaller screens */
+  .panel-item { width: 100%; }
+}
+
 .achievements .list-group {
 	font-size: 110%;
 	box-shadow: none;
