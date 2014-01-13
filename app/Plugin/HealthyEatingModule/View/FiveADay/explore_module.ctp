@@ -2,7 +2,7 @@
 <h2>
 	How eating 5-a-day can improve your health
 	<span class="container pull-right">
-	<?php echo $this->Html->image('/healthy_eating_module/img/five_a_day/fruitnveg.png', array('alt' => "Fruit and veg in the shape of a heart", 'escape' => false));?>
+	<?php echo $this->Html->image('/healthy_eating_module/img/five_a_day/fruitnveg.png', array('alt' => "Fruit and veg in the shape of a heart", 'escape' => false, 'class' => "hidden-xs"));?>
 	</span>
 </h2>
 <h3>
@@ -19,7 +19,7 @@
 		maintain a healthy gut and can prevent constipation.</li>
 </ul>
 <h3>
-	Fruit and vegetable improve your health because...
+	Fruit and vegetables improve your health because...
 </h3>
 <ul>
 	<li>Making sure you eat your 5-a-day can reduce the risk of serious
@@ -45,7 +45,7 @@ It is important to remember that eating the recommended levels of
 </p>
 <?php
 if($added_to_dashboard) {
-	echo $this->Html->link(__('<span class="glyphicon glyphicon-th-large"></span> View the module dashboard'), array('action' => 'module_dashboard'), array('class' => 'btn btn-success btn-md bot-buffer pull-right', 'target' => '_self', 'escape' => false));
+	echo $this->Html->link(__('<span class="glyphicon glyphicon-th-large"></span> View the module dashboard'), array('action' => 'module_dashboard'), array('class' => 'btn btn-success btn-md top-buffer bot-buffer pull-right', 'target' => '_self', 'escape' => false));
 } else {
-	echo $this->Html->link(__('<span class="glyphicon glyphicon-ok-circle"></span> Add this module to your dashboard'), array('action' => 'add_module'), array('class' => 'btn btn-success btn-md bot-buffer pull-right', 'target' => '_self', 'escape' => false));
+	echo $this->Html->link(__('<span class="glyphicon glyphicon-ok-circle"></span> Add this module to your dashboard'), array('action' => 'add_module'), array('class' => 'btn btn-success btn-md top-buffer bot-buffer pull-right', 'target' => '_self', 'escape' => false));
 }?>
