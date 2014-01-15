@@ -1,0 +1,10 @@
+/* #Mobile (Portrait) */
+@media only screen and (max-width: 479px) {
+	.module-title img {
+		float: left;
+	}
+	
+	.profile-link {
+		display: none;
+	}
+}

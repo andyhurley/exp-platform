@@ -3,7 +3,7 @@
 echo $this->Html->link(
 		__d('cake_dev', 'Skip these questions for now >>'),
 		array('plugin' => false, 'controller' => 'users', 'action' => 'dashboard'),
-		array('class'=>'pull-right')
+		array('class'=>'pull-right btn btn-primary')
 );
 ?>
 <p class="lead">Please enter some general details about your health and employment below.</p>
@@ -142,11 +142,11 @@ echo $this->Html->link(
 	<?php 
 		echo $this->Form->input('GeneralHealth.sickness_absence', array(
 				'label' => '5. In the last 6 months, how many days were you off work for health reasons?',
-				'style' => 'width:3em'
+				'style' => 'width:5em'
 		));
 		echo $this->Form->input('GeneralHealth.sickness_absence_spells', array(
 				'label' => '6. In the last 6 months, how many spells of sickness absence lasting a week or more have you experienced?',
-				'style' => 'width:3em'
+				'style' => 'width:5em'
 		));
 	?>
 	<div class="input">

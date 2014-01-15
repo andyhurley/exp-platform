@@ -177,7 +177,12 @@ form .submit input#cancel[type=submit] {
 	vertical-align:middle;
 }
 
-.module-list .explore, .module-list .icon {
+.module-list .explore {
+	text-align:center;
+}
+
+.module-list .icon {
+	width: 100px;
 	text-align:center;
 }
 

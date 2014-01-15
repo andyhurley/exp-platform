@@ -1,4 +1,4 @@
-<div class="pull-right">
+<div class="pull-right profile-link">
 	<?php
 			echo $this->Html->image(
 				'Apps-system-users-icon.png', 
@@ -30,9 +30,9 @@
 	</div>
 	<?php } ?>
 
-<div class="row" id="panel-container">
 <?php 
 	if (empty($userModules)) {?>
+	<div class="row">
 		<div class="col-md-12">
 			<p class="lead">You don't currently have any health modules added to your dashboard. Why not explore some of the available modules listed below, and see if any of them are of interest...</p>
 			<div class="row">
@@ -68,8 +68,11 @@
 				</div>
 			</div>
 		</div>
+	</div>
 	<?php
-	} else {
+	} else {?>
+	<div class="row" id="panel-container">
+		<?php
 		foreach ($userModules as $module):
 			$widget = $this->requestAction($module['Modules']['base_url'].'/dashboard_widget'); 
 			?>
@@ -95,7 +98,6 @@
 					</div>
 				</div>
 			</div>
-		<?php endforeach;
-	}
-?>
-</div>
+		<?php endforeach; ?>
+	</div>
+<?php } ?>

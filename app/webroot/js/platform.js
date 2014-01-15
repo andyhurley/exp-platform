@@ -21,6 +21,10 @@ $(document).ready(function() {
 			columnWidth: '.panel-item'
 		});
 	});
+	
+	// Add a glyph icon to sidebar menus to make them look more like links
+	$(".list-group a.list-group-item").prepend("<span class='glyphicon glyphicon-chevron-right'></span>&nbsp;&nbsp;");
+
 });
 
 function getImperialHeight(cms)

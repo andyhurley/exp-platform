@@ -34,6 +34,7 @@ $cakeDescription = __d('cake_dev', 'Experimental Platform for Health Promotion')
 		echo $this->Html->css('bootstrap/bootstrap.min.css');
 		echo $this->Html->css('bootstrap/bootstrap-theme.min.css');
 		echo $this->Html->css('platform');
+		echo $this->Html->css('responsive');
 		echo $this->Html->script('http://code.jquery.com/jquery-latest.min.js');
 		echo $this->Html->script('http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js');
 		echo $this->Html->script('jquery-ui-1.10.3.custom/js/jquery-ui-1.10.3.custom.min.js');
