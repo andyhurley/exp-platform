@@ -103,6 +103,10 @@ form label.radio {
 }
 
 /* Calendar classes */
+.calendar td, .calendar th {
+	min-width: 42px;
+}
+
 .calendar .red, .calendar .red a:link{
 	background-color:#FF0000;
 	color:#FFFFFF;
@@ -113,13 +117,15 @@ form label.radio {
 }
 
 .calendar .add a{
-	background-image: url(/img/Actions-window-new-icon.png);
-	background-repeat: no-repeat;
-	background-position: center top;
+	background: none;
 	display: block;
-	height: 32px;
 	text-indent: -6000px;
 	overflow: hidden;
+}
+
+.calendar .add img {
+	margin: 0 auto;
+	display: block;
 }
 
 .calendar a {

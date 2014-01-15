@@ -177,7 +177,7 @@
 							}
 						}
 						elseif ($caldate < $now){ 
-							$cell = "+"; // if the date is in the past show an "add" link.
+							$cell = "<img src='/img/Actions-window-new-icon.png' class='img-responsive' />"; // if the date is in the past show an "add" link.
 							$class = " class='add'";
 							$popup = "Click to add a record for this date";
 						}

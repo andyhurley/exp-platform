@@ -7,10 +7,13 @@ $(document).ready(function() {
 	
 	$(".alert").alert();
 	
-	// Match all #calendar <a/> links with a title tag and convert to a qtip.
+	// Match all #calendar <a/> links with a title tag and convert to a tooltip.
 	$('#calendar a[title]').tooltip({html:true});
 	
-	// Match all .info <a/> links with a title tag and convert to a qtip.
+	// Match all <span/> links with a title tag and convert to a tooltip.
+	$('span[title]').tooltip({html:true, container: 'body'});
+	
+	// Match all .info <a/> links with a title tag and convert to a tooltip.
 	$('a.info[title]').tooltip();
 	$('a.infohover[title]').tooltip();
 	
@@ -24,7 +27,6 @@ $(document).ready(function() {
 	
 	// Add a glyph icon to sidebar menus to make them look more like links
 	$(".list-group a.list-group-item").prepend("<span class='glyphicon glyphicon-chevron-right'></span>&nbsp;&nbsp;");
-
 });
 
 function getImperialHeight(cms)
