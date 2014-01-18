@@ -39,14 +39,17 @@ class ModuleHelperFunctions {
 	}
 	
 	/**
-	 * Returns the set of monthly calendar entries for the given year and month, in a format ready to
-	 * pass to the CalendarHelper class.
-	 *
+	 * Returns the set of monthly calendar entries for the given year and month, along with an indication of
+	 * achievement level for each day, in a format ready to pass to the CalendarHelper class.
+	 * 
+	 * @param string $model
+	 * @param string $user_id
 	 * @param string $year
 	 * @param string $month
+	 * @param array $targetLevels
 	 * @return array
 	 */
-	public function getMonthlyCalendarEntries($model = null, $userId = null, $year = null, $month = null) {
+	public function getMonthlyCalendarEntries($model = null, $userId = null, $year = null, $month = null, $targetLevels = null) {
 		// Use today's date if no date given.
 		if(is_null($month)) $month = gmdate("F");
 		if(is_null($year)) $year = gmdate("Y");
@@ -74,14 +77,21 @@ class ModuleHelperFunctions {
 			foreach($weekdayList as $weekDayNo => $weekday) {
 				$weekDayDate = strtotime("2:00 " . $weeklyEntry[get_class($model)]['week_beginning']
 						. " +" . $weekDayNo . " day");
-				if(date('n Y', $weekDayDate) == $monthnum . " " . $year) {
-					$comment = "Daily entry: ".$weeklyEntry[get_class($model)][$weekday];
-					if(!empty($weeklyEntry[get_class($model)]['what_worked'])) {
-						$comment .= "<br />What worked for me this week: ".$weeklyEntry[get_class($model)]['what_worked'];
+				
+				// Which target level did the daily entry reach?
+				$dayLevel = count($targetLevels) - 1;
+				foreach($targetLevels as $level => $target) {
+					if ($weeklyEntry[get_class($model)][$weekday] >= $target) {
+						$dayLevel = $level;
+						break;
 					}
+				}
+				
+				if(date('n Y', $weekDayDate) == $monthnum . " " . $year) {
 					$records[date('j', $weekDayDate)] = array(
 							'entry' => $weeklyEntry[get_class($model)][$weekday],
-							'comment' => $comment
+							'whatworked' => $weeklyEntry[get_class($model)]['what_worked'],
+							'level' => $dayLevel
 					);
 				}
 			}

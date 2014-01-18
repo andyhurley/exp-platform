@@ -1,13 +1,18 @@
 <?php
 $this->extend('/Modules/module_template');
 echo $this->Html->css('/ExampleModule/css/module.css', array('inline'=> false));
+
+$cellTemplates = array(
+		'<img src="/example_module/img/Emotes-face-smile-big-icon.png" alt="Smiley face" class="img-responsive" /><span>%1$s</span>',
+		'<img src="/example_module/img/Emotes-face-sad-icon.png" alt="Sad face" class="img-responsive" /><span>%1$s</span>'
+);
 ?>
 
 <h2>Your monthly records</h2>
 <p class="lead">Use this screen to quickly review your records on a month-by-month basis.
 <div class="calendar-holder col-md-8">
 <?php 
-	echo $this->Calendar->calendar($year,$month,$records,'/example_module/simple_health_test/view_records','/example_module/simple_health_test/data_entry','7','green-simple','red-simple'); 
+	echo $this->Calendar->calendar($year,$month,$records,'/example_module/simple_health_test/view_records','/example_module/simple_health_test/data_entry',$cellTemplates, 'My health score');
 ?>
 </div>
 <div class="calendar-key col-md-4">

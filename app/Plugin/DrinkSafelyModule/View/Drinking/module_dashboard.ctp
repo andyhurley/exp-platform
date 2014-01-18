@@ -1,6 +1,12 @@
 <?php
 $this->extend('/Modules/module_template');
 echo $this->Html->css('/drink_safely_module/css/module.css', array('inline' => false));
+
+$cellTemplates = array(
+		'<img src="/drink_safely_module/img/drinking/beer-battered.png" alt="Binge drinking level" class="img-responsive" /><span>%1$s</span>',
+		'<img src="/drink_safely_module/img/drinking/beer-icon.png" alt="Overflowing beer glass" class="img-responsive" /><span>%1$s</span>',
+		'<img src="/drink_safely_module/img/drinking/beer-good-icon.png" alt="Beer glass" class="img-responsive" /><span>%1$s</span>'
+);
 ?>
 <div class="row">
 <?php
@@ -48,16 +54,8 @@ if ($newswidget != "") echo $newswidget;
 			</h3>
 		</div>
 		<div class="panel-body">
-		<?php 
-			if ($gender == "F"){ 
-				$safelimit = 3;
-				$excesslimit = 6;
-			}
-			else {
-				$safelimit = 4; 
-				$excesslimit = 8;
-			}
-			echo $this->Calendar->calendar($year,$month,$records,'/drink_safely_module/drinking/module_dashboard','/drink_safely_module/drinking/data_entry',$excesslimit,'badbeer','goodbeer',$safelimit,'excessbeer');
+		<?php
+			echo $this->Calendar->calendar($year,$month,$records,'/drink_safely_module/drinking/module_dashboard','/drink_safely_module/drinking/data_entry', $cellTemplates, 'No. of units consumed');
 			echo $this->Html->link(__('Add weekly record <span class="glyphicon glyphicon-plus"></span>'), array('action' => 'data_entry', date("Ymd")),array('class' => 'btn btn-success btn-md pull-right', 'escape' => false)); ?>
 		</div>
 		<div class="panel-footer">

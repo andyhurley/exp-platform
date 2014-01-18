@@ -276,9 +276,16 @@ class DrinkingController extends DrinkSafelyModuleAppController implements Modul
   		// Get the gender
   		$gender = $this->User->data['Profile']['gender'];
   		$this->set('gender', $gender);
+
+  		// Set the target levels
+  		if ($gender == "F"){
+  			$targetLevels = array(6,3,0);
+  		} else {
+  			$targetLevels = array(8,4,0);
+  		}
   		
   		// Calendar Related Items:
-  		$monthlyRecords = $helper->getMonthlyCalendarEntries($this->DrinkingWeekly, $userId, $year, $month);
+  		$monthlyRecords = $helper->getMonthlyCalendarEntries($this->DrinkingWeekly, $userId, $year, $month, $targetLevels);
   		$this->set('records', $monthlyRecords);
 		$this->set('title_for_layout', 'My `' . $this->module_name() . '` Dashboard');
   	}
@@ -323,8 +330,15 @@ class DrinkingController extends DrinkSafelyModuleAppController implements Modul
   		// Get the current user
   		$userId = $this->Auth->user('id');
 
+  		// Set the target levels
+  		if ($gender == "F"){
+  			$targetLevels = array(6,3,0);
+  		} else {
+  			$targetLevels = array(8,4,0);
+  		}
+  		
   		// Calendar Related Items:
-  		$monthlyRecords = $helper->getMonthlyCalendarEntries($this->DrinkingWeekly, $userId, $year, $month);
+  		$monthlyRecords = $helper->getMonthlyCalendarEntries($this->DrinkingWeekly, $userId, $year, $month, $targetLevels);
   		$this->set('records', $monthlyRecords);
 		$this->set('title_for_layout', 'My `' . $this->module_name() . '` Monthly Records for ' . $month . ' ' . $year);
   	}

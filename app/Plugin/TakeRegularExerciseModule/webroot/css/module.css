@@ -1,44 +1,4 @@
 /*Regular Exercise Calendar*/
-
-.calendar .red-exercise a{
-	height: 32px;
-	background-image: url(/take_regular_exercise_module/img/Emotes-face-sad-icon.png);
-	background-repeat: no-repeat;
-	background-position: center top;
-	display: block;
-	padding-top: 10px;
-	text-indent: -6000px;
-	overflow: hidden;
-}
-.calendar .amber-exercise a{
-	height: 32px;
-	background-image: url(/take_regular_exercise_module/img/Emotes-face-smile-icon.png);
-	background-repeat: no-repeat;
-	background-position: center top;
-	display: block;
-	padding-top: 10px;
-	text-indent: -6000px;
-	overflow: hidden;
-}
-.calendar .red-exercise, .calendar .red-exercise a:link, .calendar .red-exercise a:visited ,calendar .green-exercise, .calendar .green-exercise a:link, .calendar .green-exercise a:visited, calendar .amber-exercise, .calendar .amber-exercise a:link, .calendar .amber-exercise a:visited{
-	color:#ffffff;
-	text-align: center;
-}
-.calendar .green-exercise a{
-	background-image: url(/take_regular_exercise_module/img/Emotes-face-smile-big-icon.png);
-	background-repeat: no-repeat;
-	background-position: center top;
-	display: block;
-	height: 32px;
-	padding-top:10px;
-	text-indent: -6000px;
-	overflow: hidden;
-}
-.calendar .cell-number {
-	color: #000000;
-	text-align: left;
-}
-.calendar .add .cell-data{
-	text-align: center;
-	margin-top: 0px;
+.calendar .cell-data img {
+	z-index: 4;	
 }

@@ -1,6 +1,11 @@
 <?php
 $this->extend('/Modules/module_template');
 echo $this->Html->css('/ExampleModule/css/module.css', array('inline' => false));
+
+$cellTemplates = array(
+	'<img src="/example_module/img/Emotes-face-smile-big-icon.png" alt="Smiley face" class="img-responsive" /><span>%1$s</span>',
+	'<img src="/example_module/img/Emotes-face-sad-icon.png" alt="Sad face" class="img-responsive" /><span>%1$s</span>'
+);
 ?>
 <div class="row">
 
@@ -51,7 +56,7 @@ if ($newswidget != "") echo $newswidget;
 		</h3>
 		</div>
 		<div class="panel-body">
-		<?php echo $this->Calendar->calendar($year,$month,$records,'/example_module/simple_health_test/module_dashboard','/example_module/simple_health_test/data_entry','7','green-simple','red-simple'); ?>
+		<?php echo $this->Calendar->calendar($year,$month,$records,'/example_module/simple_health_test/module_dashboard','/example_module/simple_health_test/data_entry',$cellTemplates, 'My health score'); ?>
 		<?php echo $this->Html->link(__('Add weekly record <span class="glyphicon glyphicon-plus"></span>'), array('action' => 'data_entry', date("Ymd")),array('class' => 'btn btn-success btn-md pull-right', 'escape' => false)); ?>
 		</div>
 		<div class="panel-footer">

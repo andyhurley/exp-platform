@@ -246,8 +246,11 @@ class StopSmokingController extends StopSmokingModuleAppController implements Mo
   		// Get the current user
   		$userId = $this->Auth->user('id');
 
+  		// Set the target levels
+  		$targetLevels = array(1,0);
+  		
   		// Calendar Related Items:
-  		$monthlyRecords = $helper->getMonthlyCalendarEntries($this->StopSmokingWeekly, $userId, $year, $month);
+  		$monthlyRecords = $helper->getMonthlyCalendarEntries($this->StopSmokingWeekly, $userId, $year, $month, $targetLevels);
   		$this->set('records', $monthlyRecords);
 		$this->set('title_for_layout', 'My `' . $this->module_name() . '` Dashboard');
   	}
@@ -280,9 +283,12 @@ class StopSmokingController extends StopSmokingModuleAppController implements Mo
   		
   		// Get the current user
   		$userId = $this->Auth->user('id');
+
+  		// Set the target levels
+  		$targetLevels = array(1,0);
   		
-		// Calendar Related Items:
-  		$monthlyRecords = $helper->getMonthlyCalendarEntries($this->StopSmokingWeekly, $userId, $year, $month);
+  		// Calendar Related Items:
+  		$monthlyRecords = $helper->getMonthlyCalendarEntries($this->StopSmokingWeekly, $userId, $year, $month, $targetLevels);
   		$this->set('records', $monthlyRecords);
 		$this->set('title_for_layout', 'My `' . $this->module_name() . '` records for ' . ucwords($month) . ' ' . $year);
   	}

@@ -107,13 +107,30 @@ form label.radio {
 	min-width: 42px;
 }
 
-.calendar .red, .calendar .red a:link{
-	background-color:#FF0000;
-	color:#FFFFFF;
+.calendar .cell-number {
+	color: #000000;
+	text-align: left;
 }
-.calendar .green, .calendar .green a:link{
-	background-color:#006600;
-	color:#FFFFFF;
+
+.calendar .cell-data {
+	text-align:center;
+	min-height: 32px;
+	position: relative;
+}
+
+.calendar .cell-data span {
+	position: relative;
+	display: block;
+	z-index:2;
+	font-weight: bold;
+}
+
+.calendar .cell-data img {
+	position:absolute;
+	margin: 0 auto;
+	left:0;
+	right:0;
+	z-index:1;
 }
 
 .calendar .add a{
@@ -121,11 +138,6 @@ form label.radio {
 	display: block;
 	text-indent: -6000px;
 	overflow: hidden;
-}
-
-.calendar .add img {
-	margin: 0 auto;
-	display: block;
 }
 
 .calendar a {

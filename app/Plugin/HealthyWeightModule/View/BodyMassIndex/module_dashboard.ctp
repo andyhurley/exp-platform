@@ -1,6 +1,10 @@
 <?php
 $this->extend('/Modules/module_template');
 echo $this->Html->css('/HealthyWeightModule/css/module.css', array('inline' => false));
+
+$cellTemplates = array(
+	'<img src="/img/Actions-view-close-icon.png" alt="BMI indicator" class="img-responsive" /><span>%1$s</span>',
+);
 ?>
 <div class="row">
 <?php
@@ -49,7 +53,7 @@ if ($newswidget != "") echo $newswidget;
 		</div>
 		<div class="panel-body">
 			<?php 
-				echo $this->Calendar->calendar($year,$month,$records,'/healthy_weight_module/body_mass_index/module_dashboard','/healthy_weight_module/body_mass_index/data_entry','$passrate','bmi','bmi'); 
+				echo $this->Calendar->calendar($year,$month,$records,'/healthy_weight_module/body_mass_index/module_dashboard','/healthy_weight_module/body_mass_index/data_entry',$cellTemplates, 'BMI'); 
 				echo $this->Html->link(__('Add weekly record <span class="glyphicon glyphicon-plus"></span>'), array('action' => 'data_entry', date("Ymd")),array('class' => 'btn btn-success btn-md pull-right', 'escape' => false));
 			?>
 		</div>

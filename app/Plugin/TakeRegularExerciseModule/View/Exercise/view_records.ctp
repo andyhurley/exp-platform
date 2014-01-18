@@ -1,13 +1,19 @@
 <?php
 $this->extend('/Modules/module_template');
 echo $this->Html->css('/take_regular_exercise_module/css/module.css', array('inline'=> false));
+
+$cellTemplates = array(
+		'<img src="/take_regular_exercise_module/img/Emotes-face-smile-big-icon.png" alt="Big smile" class="img-responsive" /><span>%1$s</span>',
+		'<img src="/take_regular_exercise_module/img/Emotes-face-smile-icon.png" alt="Smile" class="img-responsive" /><span>%1$s</span>',
+		'<img src="/take_regular_exercise_module/img/Emotes-face-sad-icon.png" alt="Sad face" class="img-responsive" /><span>%1$s</span>'
+);
 ?>
 
 <h2>Your monthly records</h2>
 <p class="lead">Use this screen to quickly review your records on a month-by-month basis.</p>
 <div class="calendar-holder col-md-8">
 <?php 
-	echo $this->Calendar->calendar($year,$month,$records,'/take_regular_exercise_module/exercise/view_records','/take_regular_exercise_module/exercise/data_entry','21','green-exercise','red-exercise','1','amber-exercise'); 
+	echo $this->Calendar->calendar($year,$month,$records,'/take_regular_exercise_module/exercise/view_records','/take_regular_exercise_module/exercise/data_entry', $cellTemplates, 'No. of minutes of exercise'); 
 ?>
 </div>
 <div class="calendar-key col-md-4">
@@ -24,15 +30,15 @@ echo $this->Html->css('/take_regular_exercise_module/css/module.css', array('inl
 			</li>
 			<li class="list-group-item">
 				<?php echo $this->Html->image('/take_regular_exercise_module/img/Emotes-face-smile-big-icon.png', array('alt' => "Big Smiley face icon", 'escape' => false, 'class'=> 'small-icon'));?>
-				You've reached at least 21 minutes of exercise on this day, which will help you towards your target of 150 for the week! If you hover your mouse over the icon, you'll see exactly how many minutes you recorded.
+				You've reached at least 25 minutes of exercise on this day, which will help you towards your target of 150 for the week! If you hover your mouse over the icon, you'll see exactly how many minutes you recorded.
 			</li>
 			<li class="list-group-item">
 				<?php echo $this->Html->image('/take_regular_exercise_module/img/Emotes-face-smile-icon.png', array('alt' => "Smiley face icon", 'escape' => false, 'class'=> 'small-icon'));?>
-				You've done some exercise today but not the 21 minutes of exercise on this day you need to help you reach your target of 150 for the week! If you hover your mouse over the icon, you'll see exactly how many minutes you recorded.
+				You've done some exercise today but not the 25 minutes of exercise on this day you need to help you reach your target of 150 for the week! If you hover your mouse over the icon, you'll see exactly how many minutes you recorded.
 			</li>
 			<li class="list-group-item">
 				<?php echo $this->Html->image('/take_regular_exercise_module/img/Emotes-face-sad-icon.png', array('alt' => "Sad face icon", 'escape' => false, 'class'=> 'small-icon'));?>
-				You've recorded an entry for this day, but you didn't hit the target of at least 21 minutes.
+				You've recorded an entry for this day, but you weren't able to fit in at least 10 minutes of exercise.
 			</li>
 			</ul>
 			<p>Any calendar dates which don't have an icon are days in the future (so you can't record anything for those days, yet!)

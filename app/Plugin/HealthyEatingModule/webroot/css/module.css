@@ -1,37 +1,16 @@
 /*Five A Day Calendar*/
+.calendar .level1 img {
+	opacity: 0.6;
+}
 
-.calendar .red5 a{
-	height: 26px;
-	/*background-color:#FF0000;*/
-	background-image: url(/healthy_eating_module/img/five_a_day/apple-core.png);
-	background-repeat: no-repeat;
-	background-position: center top;
-	display: block;
-	padding-top: 10px;
+.calendar .level0 .cell-data span {
+	color: white;
+	padding-top: 8px;
 }
-.calendar .red5, .calendar .red5 a:link, .calendar .red5 a:visited{
-	color:#000000;
-	text-align: center;
-}
-.calendar .green5, .calendar .green5 a:link, .calendar .green5 a:visited{
-	color:#ffffff;
-	text-align: center;
-}
-.calendar .green5 a{
-	background-image: url(/healthy_eating_module/img/five_a_day/apple-full.png);
-	background-repeat: no-repeat;
-	background-position: center top;
-	display: block;
-	height: 32px;
-	padding-top:10px;
-}
-.calendar .cell-number {
-	color: #000000;
-	text-align: left;
-}
-.calendar .add .cell-data{
-	text-align: center;
-	margin-top: 0px;
+
+.calendar .level1 .cell-data span {
+	color: black;
+	padding-top: 8px;
 }
 
 /* Five a Day Form */

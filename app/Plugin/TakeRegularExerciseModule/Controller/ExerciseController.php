@@ -245,8 +245,11 @@ class ExerciseController extends TakeRegularExerciseModuleAppController implemen
   		// Get the current user
   		$userId = $this->Auth->user('id');
 
+  		// Set the target levels
+  		$targetLevels = array(25,10,0);
+  		
   		// Calendar Related Items:
-  		$monthlyRecords = $helper->getMonthlyCalendarEntries($this->ExerciseWeekly, $userId, $year, $month);
+  		$monthlyRecords = $helper->getMonthlyCalendarEntries($this->ExerciseWeekly, $userId, $year, $month, $targetLevels);
   		$this->set('records', $monthlyRecords);
 		$this->set('title_for_layout', 'My `' . $this->module_name() . '` Dashboard');
   	}
@@ -281,8 +284,11 @@ class ExerciseController extends TakeRegularExerciseModuleAppController implemen
   		// Get the current user
   		$userId = $this->Auth->user('id');
 
+  		// Set the target levels
+  		$targetLevels = array(25,10,0);
+  		
   		// Calendar Related Items:
-  		$monthlyRecords = $helper->getMonthlyCalendarEntries($this->ExerciseWeekly, $userId, $year, $month);
+  		$monthlyRecords = $helper->getMonthlyCalendarEntries($this->ExerciseWeekly, $userId, $year, $month, $targetLevels);
   		$this->set('records', $monthlyRecords);
 		$this->set('title_for_layout', 'My `' . $this->module_name() . '` records for '. $month . ' ' . $year);
   	}

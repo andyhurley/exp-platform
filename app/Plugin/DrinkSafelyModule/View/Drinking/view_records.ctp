@@ -1,6 +1,12 @@
 <?php
 $this->extend('/Modules/module_template');
 echo $this->Html->css('/drink_safely_module/css/module.css', array('inline'=> false));
+
+$cellTemplates = array(
+		'<img src="/drink_safely_module/img/drinking/beer-battered.png" alt="Binge drinking level" class="img-responsive" /><span>%1$s</span>',
+		'<img src="/drink_safely_module/img/drinking/beer-icon.png" alt="Overflowing beer glass" class="img-responsive" /><span>%1$s</span>',
+		'<img src="/drink_safely_module/img/drinking/beer-good-icon.png" alt="Beer glass" class="img-responsive" /><span>%1$s</span>'
+);
 ?>
 
 <h2>Your monthly records</h2>
@@ -16,7 +22,7 @@ echo $this->Html->css('/drink_safely_module/css/module.css', array('inline'=> fa
 		$excesslimit = 8; // over which is considered binge drinking
 	}
 	
-	echo $this->Calendar->calendar($year,$month,$records,'/drink_safely_module/drinking/view_records','/drink_safely_module/drinking/data_entry',$excesslimit,'badbeer','goodbeer',$safelimit,'excessbeer'); 
+	echo $this->Calendar->calendar($year,$month,$records,'/drink_safely_module/drinking/view_records','/drink_safely_module/drinking/data_entry', $cellTemplates, 'No. of units consumed');
 ?>
 </div>
 <div class="calendar-key col-md-4">

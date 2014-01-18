@@ -1,13 +1,18 @@
 <?php
 $this->extend('/Modules/module_template');
 echo $this->Html->css('/HealthyEatingModule/css/module.css', array('inline'=> false));
+
+$cellTemplates = array(
+	'<img src="/healthy_eating_module/img/five_a_day/apple-full.png" alt="Apple" class="img-responsive" /><span>%1$s</span>',
+	'<img src="/healthy_eating_module/img/five_a_day/apple-core.png" alt="Apple core" class="img-responsive" /><span>%1$s</span>'
+);
 ?>
 
 <h2>Your monthly records</h2>
 <p class="lead">Use this screen to quickly review your records on a month-by-month basis.
 <div class="calendar-holder col-md-8">
 <?php 
-	echo $this->Calendar->calendar($year,$month,$records,'/healthy_eating_module/five_a_day/view_records','/healthy_eating_module/five_a_day/data_entry','5','green5','red5'); 
+	echo $this->Calendar->calendar($year,$month,$records,'/healthy_eating_module/five_a_day/view_records','/healthy_eating_module/five_a_day/data_entry',$cellTemplates, 'Number of portions eaten'); 
 ?>
 </div>
 <div class="calendar-key col-md-4">

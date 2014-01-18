@@ -300,13 +300,10 @@ class BodyMassIndexController extends HealthyWeightModuleAppController implement
 				$weekDayDate = strtotime("2:00 " . $weeklyEntry[get_class($model)]['week_beginning']
 						. " +" . $weekDayNo . " day");
 				if(date('n Y', $weekDayDate) == $monthnum . " " . $year) {
-					$comment = "Weekly entry: ".$weeklyEntry[get_class($model)]['bmi'];
-					if(!empty($weeklyEntry[get_class($model)]['what_worked'])) {
-						$comment .= "<br />What worked for me this week: ".$weeklyEntry[get_class($model)]['what_worked'];
-					}
 					$records[date('j', $weekDayDate)] = array(
 							'entry' => $weeklyEntry[get_class($model)]['bmi'],
-							'comment' => $comment
+							'whatworked' => $weeklyEntry[get_class($model)]['what_worked'],
+							'level' => 0
 					);
 				}
 			}
@@ -372,13 +369,10 @@ class BodyMassIndexController extends HealthyWeightModuleAppController implement
 				$weekDayDate = strtotime("2:00 " . $weeklyEntry[get_class($model)]['week_beginning']
 						. " +" . $weekDayNo . " day");
 				if(date('n Y', $weekDayDate) == $monthnum . " " . $year) {
-					$comment = "Weekly entry: ".$weeklyEntry[get_class($model)]['bmi'];
-					if(!empty($weeklyEntry[get_class($model)]['what_worked'])) {
-						$comment .= "<br />What worked for me this week: ".$weeklyEntry[get_class($model)]['what_worked'];
-					}
 					$records[date('j', $weekDayDate)] = array(
 							'entry' => $weeklyEntry[get_class($model)]['bmi'],
-							'comment' => $comment
+							'whatworked' => $weeklyEntry[get_class($model)]['what_worked'],
+							'level' => 0
 					);
 				}
 			}

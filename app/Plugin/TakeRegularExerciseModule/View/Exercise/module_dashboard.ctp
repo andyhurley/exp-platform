@@ -1,6 +1,12 @@
 <?php
 $this->extend('/Modules/module_template');
 echo $this->Html->css('/TakeRegularExerciseModule/css/module.css', array('inline' => false));
+
+$cellTemplates = array(
+	'<img src="/take_regular_exercise_module/img/Emotes-face-smile-big-icon.png" alt="Big smile" class="img-responsive" /><span>%1$s</span>',
+	'<img src="/take_regular_exercise_module/img/Emotes-face-smile-icon.png" alt="Smile" class="img-responsive" /><span>%1$s</span>',
+	'<img src="/take_regular_exercise_module/img/Emotes-face-sad-icon.png" alt="Sad face" class="img-responsive" /><span>%1$s</span>'
+);
 ?>
 <div class="row">
 <?php
@@ -48,7 +54,7 @@ if ($newswidget != "") echo $newswidget;
 			</h3>
 		</div>
 		<div class="panel-body">
-			<?php echo $this->Calendar->calendar($year,$month,$records,'/take_regular_exercise_module/exercise/module_dashboard','/take_regular_exercise_module/exercise/data_entry','21','green-exercise','red-exercise','1','amber-exercise'); ?>
+			<?php echo $this->Calendar->calendar($year,$month,$records,'/take_regular_exercise_module/exercise/module_dashboard','/take_regular_exercise_module/exercise/data_entry', $cellTemplates, 'No. of minutes of exercise'); ?>
 			<?php echo $this->Html->link(__('Add weekly record <span class="glyphicon glyphicon-plus"></span>'), array('action' => 'data_entry', date("Ymd")),array('class' => 'btn btn-success btn-md pull-right', 'escape' => false)); ?>
 		</div>
 		<div class="panel-footer">

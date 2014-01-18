@@ -1,13 +1,17 @@
 <?php
 $this->extend('/Modules/module_template');
 echo $this->Html->css('/healthy_weight_module/css/module.css', array('inline'=> false));
+
+$cellTemplates = array(
+		'<img src="/img/Actions-view-close-icon.png" alt="BMI indicator" class="img-responsive" /><span>%1$s</span>',
+);
 ?>
 
 <h2>Your monthly records</h2>
 <p class="lead">Use this screen to quickly review your records on a month-by-month basis.
 <div class="calendar-holder col-md-8">
 <?php 
-	echo $this->Calendar->calendar($year,$month,$records,'/healthy_weight_module/body_mass_index/view_records','/healthy_weight_module/body_mass_index/data_entry','$pass-rate','bmi','bmi'); 
+	echo $this->Calendar->calendar($year,$month,$records,'/healthy_weight_module/body_mass_index/view_records','/healthy_weight_module/body_mass_index/data_entry',$cellTemplates, 'BMI'); 
 ?>
 </div>
 <div class="calendar-key col-md-4">

@@ -1,6 +1,11 @@
 <?php
 $this->extend('/Modules/module_template');
 echo $this->Html->css('/stop_smoking_module/css/module.css', array('inline' => false));
+
+$cellTemplates = array(
+		'<img src="/stop_smoking_module/img/smoking-face.png" alt="Smoked" class="img-responsive" /><span>S</span>',
+		'<img src="/stop_smoking_module/img/smiley-face.png" alt="Smoke-free" class="img-responsive" /><span>SF</span>'
+);
 ?>
 <div class="row">
 <?php
@@ -48,7 +53,7 @@ if ($newswidget != "") echo $newswidget;
 			</h3>
 		</div>
 		<div class="panel-body">
-			<?php echo $this->Calendar->calendar($year,$month,$records,'/stop_smoking_module/stop_smoking/module_dashboard','/stop_smoking_module/stop_smoking/data_entry','1','green-simple','red-simple'); ?>
+			<?php echo $this->Calendar->calendar($year,$month,$records,'/stop_smoking_module/stop_smoking/module_dashboard','/stop_smoking_module/stop_smoking/data_entry',$cellTemplates); ?>
 			<?php echo $this->Html->link(__('Add weekly record <span class="glyphicon glyphicon-plus"></span>'), array('action' => 'data_entry', date("Ymd")),array('class' => 'btn btn-success btn-md pull-right', 'escape' => false)); ?>
 		</div>
 		<div class="panel-footer">

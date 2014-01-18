@@ -252,8 +252,11 @@ class FiveADayController extends HealthyEatingModuleAppController implements Mod
   		// Get the current user
   		$userId = $this->Auth->user('id');
 
+  		// Set the target levels
+  		$targetLevels = array(5,0);
+  		
   		// Calendar Related Items:
-  		$monthlyRecords = $helper->getMonthlyCalendarEntries($this->FiveADayWeekly, $userId, $year, $month);
+  		$monthlyRecords = $helper->getMonthlyCalendarEntries($this->FiveADayWeekly, $userId, $year, $month, $targetLevels);
   		$this->set('records', $monthlyRecords);
 		$this->set('title_for_layout', 'My `' . $this->module_name() . '` Dashboard');
   	}
@@ -288,8 +291,11 @@ class FiveADayController extends HealthyEatingModuleAppController implements Mod
   		// Get the current user
   		$userId = $this->Auth->user('id');
 
+  		// Set the target levels
+  		$targetLevels = array(5,0);
+  		
   		// Calendar Related Items:
-  		$monthlyRecords = $helper->getMonthlyCalendarEntries($this->FiveADayWeekly, $userId, $year, $month);
+  		$monthlyRecords = $helper->getMonthlyCalendarEntries($this->FiveADayWeekly, $userId, $year, $month, $targetLevels);
   		$this->set('records', $monthlyRecords);
 		$this->set('title_for_layout', 'My `' . ucwords($this->module_name()) . '` records for ' . ucwords($month) . ' ' . $year);
   	}

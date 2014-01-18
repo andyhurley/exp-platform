@@ -1,13 +1,18 @@
 <?php
 $this->extend('/Modules/module_template');
 echo $this->Html->css('/stop_smoking_module/css/module.css', array('inline'=> false));
+
+$cellTemplates = array(
+		'<img src="/stop_smoking_module/img/smoking-face.png" alt="Smoked" class="img-responsive" /><span>S</span>',
+		'<img src="/stop_smoking_module/img/smiley-face.png" alt="Smoke-free" class="img-responsive" /><span>SF</span>'
+);
 ?>
 
 <h2>Your monthly records</h2>
 <p class="lead">Use this screen to quickly review your records on a month-by-month basis.
 <div class="calendar-holder col-md-8">
 <?php 
-	echo $this->Calendar->calendar($year,$month,$records,'/stop_smoking_module/stop_smoking/view_records','/stop_smoking_module/stop_smoking/data_entry','1','green-simple','red-simple'); 
+	echo $this->Calendar->calendar($year,$month,$records,'/stop_smoking_module/stop_smoking/view_records','/stop_smoking_module/stop_smoking/data_entry',$cellTemplates);
 ?>
 </div>
 <div class="calendar-key col-md-4">

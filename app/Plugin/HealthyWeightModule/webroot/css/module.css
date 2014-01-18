@@ -1,24 +1,9 @@
 /*BMI Calendar*/
-.calendar .bmi, .calendar .bmi a:link, .calendar .bmi a:visited{
-	color:#325A8A;
-	text-align: center;
+.calendar .level0 .cell-data span {
+	color: #325A8A;
 	font-size:0.8em;
-}
-.calendar .bmi a{
-	background-image: url(/img/Actions-view-close-icon.png);
-	background-repeat: no-repeat;
-	background-position: center top;
-	display: block;
-	height: 32px;
-	padding-top:10px;
-}
-.calendar .cell-number {
-	color: #000000;
-	text-align: left;
-}
-.calendar .add .cell-data{
-	text-align: center;
-	margin-top: 0px;
+	font-weight: normal;
+	padding-top: 8px;
 }
 
 /* Five a Day Form */

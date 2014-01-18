@@ -1,6 +1,11 @@
 <?php
 $this->extend('/Modules/module_template');
 echo $this->Html->css('/HealthyEatingModule/css/module.css', array('inline' => false));
+
+$cellTemplates = array(
+	'<img src="/healthy_eating_module/img/five_a_day/apple-full.png" alt="Apple" class="img-responsive" /><span>%1$s</span>',
+	'<img src="/healthy_eating_module/img/five_a_day/apple-core.png" alt="Apple core" class="img-responsive" /><span>%1$s</span>'
+);
 ?>
 <div class="row">
 <?php
@@ -49,7 +54,7 @@ if ($newswidget != "") echo $newswidget;
 			</h3>
 		</div>
 		<div class="panel-body">
-			<?php echo $this->Calendar->calendar($year,$month,$records,'/healthy_eating_module/five_a_day/module_dashboard','/healthy_eating_module/five_a_day/data_entry','5','green5','red5'); ?>
+			<?php echo $this->Calendar->calendar($year,$month,$records,'/healthy_eating_module/five_a_day/module_dashboard','/healthy_eating_module/five_a_day/data_entry',$cellTemplates, 'Number of portions eaten'); ?>
 			<?php echo $this->Html->link(__('Add weekly record <span class="glyphicon glyphicon-plus"></span>'), array('action' => 'data_entry', date("Ymd")),array('class' => 'btn btn-success btn-md pull-right', 'escape' => false)); ?>
 		</div>
 		<div class="panel-footer">

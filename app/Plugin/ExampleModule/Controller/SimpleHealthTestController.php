@@ -260,8 +260,11 @@ class SimpleHealthTestController extends ExampleModuleAppController implements M
   		// Get the current user
   		$userId = $this->Auth->user('id');
 
+  		// Set the target levels
+  		$targetLevels = array(7,0);
+  		
   		// Calendar Related Items:
-  		$monthlyRecords = $helper->getMonthlyCalendarEntries($this->SimpleHealthTestWeekly, $userId, $year, $month);
+  		$monthlyRecords = $helper->getMonthlyCalendarEntries($this->SimpleHealthTestWeekly, $userId, $year, $month, $targetLevels);
   		$this->set('records', $monthlyRecords);
 		$this->set('title_for_layout', 'My `' . $this->module_name() . '` Dashboard');
   	}
@@ -294,9 +297,12 @@ class SimpleHealthTestController extends ExampleModuleAppController implements M
   		
   		// Get the current user
   		$userId = $this->Auth->user('id');
+
+  		// Set the target levels
+  		$targetLevels = array(7,0);
   		
-		// Calendar Related Items:
-  		$monthlyRecords = $helper->getMonthlyCalendarEntries($this->SimpleHealthTestWeekly, $userId, $year, $month);
+  		// Calendar Related Items:
+  		$monthlyRecords = $helper->getMonthlyCalendarEntries($this->SimpleHealthTestWeekly, $userId, $year, $month, $targetLevels);
   		$this->set('records', $monthlyRecords);
 		$this->set('title_for_layout', 'My `' . $this->module_name() . '` monthly records for ' . ucfirst($month) . ' ' . $year);
   	}

@@ -8,7 +8,7 @@ $(document).ready(function() {
 	$(".alert").alert();
 	
 	// Match all #calendar <a/> links with a title tag and convert to a tooltip.
-	$('#calendar a[title]').tooltip({html:true});
+	$('#calendar a[title]').tooltip({html:true, container: 'body'});
 	
 	// Match all <span/> links with a title tag and convert to a tooltip.
 	$('span[title]').tooltip({html:true, container: 'body'});
