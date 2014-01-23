@@ -143,10 +143,16 @@ if(isset($nextWeek)) {
 		
 <script type="text/javascript">
 <!--
-	jQuery(".weekly-entry img").bind("click", function() 
+$(document).ready(function() {
+	// Transpose the weekly entry table if viewing on a smaller screen
+	if($(".container").width() < 600) {
+		transposeTable(".weekly-entry");
+		$(".weekly-entry thead tr").prepend("<th>Week day</th><th>Smoked?</th>");
+	}
+	
+	$(".weekly-entry img").bind("click", function() 
 	{
-    	var $tr = $(this).closest("tr");
-		var value = 0;
+    	var value = 0;
 
 		if ($(this).parent("div").hasClass('smoke')){
 			value = 0;
@@ -159,13 +165,13 @@ if(isset($nextWeek)) {
 		}
 
 		$(this).parent().siblings("input").val(value);
-    	var monday = parseFloat($tr.find("#StopSmokingWeeklyMonday").val());
-    	var tuesday = parseFloat($tr.find("#StopSmokingWeeklyTuesday").val());
-    	var wednesday = parseFloat($tr.find("#StopSmokingWeeklyWednesday").val());
-    	var thursday = parseFloat($tr.find("#StopSmokingWeeklyThursday").val());
-    	var friday = parseFloat($tr.find("#StopSmokingWeeklyFriday").val());
-    	var saturday = parseFloat($tr.find("#StopSmokingWeeklySaturday").val());
-    	var sunday = parseFloat($tr.find("#StopSmokingWeeklySunday").val());
+    	var monday = parseFloat($("#StopSmokingWeeklyMonday").val());
+    	var tuesday = parseFloat($("#StopSmokingWeeklyTuesday").val());
+    	var wednesday = parseFloat($("#StopSmokingWeeklyWednesday").val());
+    	var thursday = parseFloat($("#StopSmokingWeeklyThursday").val());
+    	var friday = parseFloat($("#StopSmokingWeeklyFriday").val());
+    	var saturday = parseFloat($("#StopSmokingWeeklySaturday").val());
+    	var sunday = parseFloat($("#StopSmokingWeeklySunday").val());
     	if(isNaN(monday)) monday = 0;
     	if(isNaN(tuesday)) tuesday = 0;
     	if(isNaN(wednesday)) wednesday = 0;
@@ -173,8 +179,9 @@ if(isset($nextWeek)) {
     	if(isNaN(friday)) friday = 0;
     	if(isNaN(saturday)) saturday = 0;
     	if(isNaN(sunday)) sunday = 0;
-    	$tr.find("#StopSmokingWeeklyTotal").val(monday + tuesday + wednesday + thursday + friday + saturday + sunday);
+    	$("#StopSmokingWeeklyTotal").val(monday + tuesday + wednesday + thursday + friday + saturday + sunday);
 	});
+});
 //-->
 
 </script>

@@ -85,23 +85,30 @@ if(isset($nextWeek)) {
 
 <script type="text/javascript">
 <!--
-jQuery(".weekly-entry input").bind("keyup", function() {
-    var $tr = $(this).closest("tr");
-    var monday = parseFloat($tr.find("#FiveADayWeeklyMonday").val());
-    var tuesday = parseFloat($tr.find("#FiveADayWeeklyTuesday").val());
-    var wednesday = parseFloat($tr.find("#FiveADayWeeklyWednesday").val());
-    var thursday = parseFloat($tr.find("#FiveADayWeeklyThursday").val());
-    var friday = parseFloat($tr.find("#FiveADayWeeklyFriday").val());
-    var saturday = parseFloat($tr.find("#FiveADayWeeklySaturday").val());
-    var sunday = parseFloat($tr.find("#FiveADayWeeklySunday").val());
-    if(isNaN(monday)) monday = 0;
-    if(isNaN(tuesday)) tuesday = 0;
-    if(isNaN(wednesday)) wednesday = 0;
-    if(isNaN(thursday)) thursday = 0;
-    if(isNaN(friday)) friday = 0;
-    if(isNaN(saturday)) saturday = 0;
-    if(isNaN(sunday)) sunday = 0;
-    $tr.find("#FiveADayWeeklyTotal").val(monday + tuesday + wednesday + thursday + friday + saturday + sunday);
+$(document).ready(function() {
+	// Transpose the weekly entry table if viewing on a smaller screen
+	if($(".container").width() < 600) {
+		transposeTable(".weekly-entry");
+		$(".weekly-entry thead tr").prepend("<th>Week day</th><th>No. of portions</th>");
+	}
+	
+	$(".weekly-entry input").bind("keyup", function() {
+	    var monday = parseFloat($("#FiveADayWeeklyMonday").val());
+	    var tuesday = parseFloat($("#FiveADayWeeklyTuesday").val());
+	    var wednesday = parseFloat($("#FiveADayWeeklyWednesday").val());
+	    var thursday = parseFloat($("#FiveADayWeeklyThursday").val());
+	    var friday = parseFloat($("#FiveADayWeeklyFriday").val());
+	    var saturday = parseFloat($("#FiveADayWeeklySaturday").val());
+	    var sunday = parseFloat($("#FiveADayWeeklySunday").val());
+	    if(isNaN(monday)) monday = 0;
+	    if(isNaN(tuesday)) tuesday = 0;
+	    if(isNaN(wednesday)) wednesday = 0;
+	    if(isNaN(thursday)) thursday = 0;
+	    if(isNaN(friday)) friday = 0;
+	    if(isNaN(saturday)) saturday = 0;
+	    if(isNaN(sunday)) sunday = 0;
+	    $("#FiveADayWeeklyTotal").val(monday + tuesday + wednesday + thursday + friday + saturday + sunday);
+	});
 });
 //-->
 </script>

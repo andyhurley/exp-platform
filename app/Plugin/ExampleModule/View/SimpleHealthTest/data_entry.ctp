@@ -86,23 +86,30 @@ if(isset($nextWeek)) {
 	<?php echo $this->Form->end(); ?>
 <script type="text/javascript">
 <!--
-	jQuery(".weekly-entry input").bind("keyup", function() {
-    var $tr = $(this).closest("tr");
-    var monday = parseFloat($tr.find("#SimpleHealthTestWeeklyMonday").val());
-    var tuesday = parseFloat($tr.find("#SimpleHealthTestWeeklyTuesday").val());
-    var wednesday = parseFloat($tr.find("#SimpleHealthTestWeeklyWednesday").val());
-    var thursday = parseFloat($tr.find("#SimpleHealthTestWeeklyThursday").val());
-    var friday = parseFloat($tr.find("#SimpleHealthTestWeeklyFriday").val());
-    var saturday = parseFloat($tr.find("#SimpleHealthTestWeeklySaturday").val());
-    var sunday = parseFloat($tr.find("#SimpleHealthTestWeeklySunday").val());
-    if(isNaN(monday)) monday = 0;
-    if(isNaN(tuesday)) tuesday = 0;
-    if(isNaN(wednesday)) wednesday = 0;
-    if(isNaN(thursday)) thursday = 0;
-    if(isNaN(friday)) friday = 0;
-    if(isNaN(saturday)) saturday = 0;
-    if(isNaN(sunday)) sunday = 0;
-    $tr.find("#SimpleHealthTestWeeklyTotal").val(monday + tuesday + wednesday + thursday + friday + saturday + sunday);
+$(document).ready(function() {
+	// Transpose the weekly entry table if viewing on a smaller screen
+	if($(".container").width() < 600) {
+		transposeTable(".weekly-entry");
+		$(".weekly-entry thead tr").prepend("<th>Week day</th><th>Health score</th>");
+	}
+	
+	$(".weekly-entry input").bind("keyup", function() {
+	    var monday = parseFloat($("#SimpleHealthTestWeeklyMonday").val());
+	    var tuesday = parseFloat($("#SimpleHealthTestWeeklyTuesday").val());
+	    var wednesday = parseFloat($("#SimpleHealthTestWeeklyWednesday").val());
+	    var thursday = parseFloat($("#SimpleHealthTestWeeklyThursday").val());
+	    var friday = parseFloat($("#SimpleHealthTestWeeklyFriday").val());
+	    var saturday = parseFloat($("#SimpleHealthTestWeeklySaturday").val());
+	    var sunday = parseFloat($("#SimpleHealthTestWeeklySunday").val());
+	    if(isNaN(monday)) monday = 0;
+	    if(isNaN(tuesday)) tuesday = 0;
+	    if(isNaN(wednesday)) wednesday = 0;
+	    if(isNaN(thursday)) thursday = 0;
+	    if(isNaN(friday)) friday = 0;
+	    if(isNaN(saturday)) saturday = 0;
+	    if(isNaN(sunday)) sunday = 0;
+	    $("#SimpleHealthTestWeeklyTotal").val(monday + tuesday + wednesday + thursday + friday + saturday + sunday);
+	});
 });
 //-->
 

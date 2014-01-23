@@ -86,23 +86,30 @@ if(isset($nextWeek)) {
 <?php echo $this->Form->end(); ?>
 
 <script type="text/javascript">
-jQuery(".weekly-entry input").bind("keyup", function() {
-    var $tr = $(this).closest("tr");
-    var monday = parseFloat($tr.find("#DrinkingWeeklyMonday").val());
-    var tuesday = parseFloat($tr.find("#DrinkingWeeklyTuesday").val());
-    var wednesday = parseFloat($tr.find("#DrinkingWeeklyWednesday").val());
-    var thursday = parseFloat($tr.find("#DrinkingWeeklyThursday").val());
-    var friday = parseFloat($tr.find("#DrinkingWeeklyFriday").val());
-    var saturday = parseFloat($tr.find("#DrinkingWeeklySaturday").val());
-    var sunday = parseFloat($tr.find("#DrinkingWeeklySunday").val());
-    if(isNaN(monday)) monday = 0;
-    if(isNaN(tuesday)) tuesday = 0;
-    if(isNaN(wednesday)) wednesday = 0;
-    if(isNaN(thursday)) thursday = 0;
-    if(isNaN(friday)) friday = 0;
-    if(isNaN(saturday)) saturday = 0;
-    if(isNaN(sunday)) sunday = 0;
-    $tr.find("#DrinkingWeeklyTotal").val(monday + tuesday + wednesday + thursday + friday + saturday + sunday);
+$(document).ready(function() {
+	// Transpose the weekly entry table if viewing on a smaller screen
+	if($(".container").width() < 600) {
+		transposeTable(".weekly-entry");
+		$(".weekly-entry thead tr").prepend("<th>Week day</th><th>No. of units</th>");
+	}
+	
+	$(".weekly-entry input").bind("keyup", function() {
+	    var monday = parseFloat($("#DrinkingWeeklyMonday").val());
+	    var tuesday = parseFloat($("#DrinkingWeeklyTuesday").val());
+	    var wednesday = parseFloat($("#DrinkingWeeklyWednesday").val());
+	    var thursday = parseFloat($("#DrinkingWeeklyThursday").val());
+	    var friday = parseFloat($("#DrinkingWeeklyFriday").val());
+	    var saturday = parseFloat($("#DrinkingWeeklySaturday").val());
+	    var sunday = parseFloat($("#DrinkingWeeklySunday").val());
+	    if(isNaN(monday)) monday = 0;
+	    if(isNaN(tuesday)) tuesday = 0;
+	    if(isNaN(wednesday)) wednesday = 0;
+	    if(isNaN(thursday)) thursday = 0;
+	    if(isNaN(friday)) friday = 0;
+	    if(isNaN(saturday)) saturday = 0;
+	    if(isNaN(sunday)) sunday = 0;
+	    $("#DrinkingWeeklyTotal").val(monday + tuesday + wednesday + thursday + friday + saturday + sunday);
+	});
 });
 </script>
 

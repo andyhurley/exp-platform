@@ -96,23 +96,30 @@ if(isset($nextWeek)) {
 <?php echo $this->Form->end(); ?>
 
 <script type="text/javascript">
-jQuery(".weekly-entry input").bind("keyup", function() {
-    var $tr = $(this).closest("tr");
-    var monday = parseFloat($tr.find("#ExerciseWeeklyMonday").val());
-    var tuesday = parseFloat($tr.find("#ExerciseWeeklyTuesday").val());
-    var wednesday = parseFloat($tr.find("#ExerciseWeeklyWednesday").val());
-    var thursday = parseFloat($tr.find("#ExerciseWeeklyThursday").val());
-    var friday = parseFloat($tr.find("#ExerciseWeeklyFriday").val());
-    var saturday = parseFloat($tr.find("#ExerciseWeeklySaturday").val());
-    var sunday = parseFloat($tr.find("#ExerciseWeeklySunday").val());
-    if(isNaN(monday)) monday = 0;
-    if(isNaN(tuesday)) tuesday = 0;
-    if(isNaN(wednesday)) wednesday = 0;
-    if(isNaN(thursday)) thursday = 0;
-    if(isNaN(friday)) friday = 0;
-    if(isNaN(saturday)) saturday = 0;
-    if(isNaN(sunday)) sunday = 0;
-    $tr.find("#ExerciseWeeklyTotal").val(monday + tuesday + wednesday + thursday + friday + saturday + sunday);
+$(document).ready(function() {
+	// Transpose the weekly entry table if viewing on a smaller screen
+	if($(".container").width() < 600) {
+		transposeTable(".weekly-entry");
+		$(".weekly-entry thead tr").prepend("<th>Week day</th><th>No. of minutes</th>");
+	}
+	
+	$(".weekly-entry input").bind("keyup", function() {
+	    var monday = parseFloat($("#ExerciseWeeklyMonday").val());
+	    var tuesday = parseFloat($("#ExerciseWeeklyTuesday").val());
+	    var wednesday = parseFloat($("#ExerciseWeeklyWednesday").val());
+	    var thursday = parseFloat($("#ExerciseWeeklyThursday").val());
+	    var friday = parseFloat($("#ExerciseWeeklyFriday").val());
+	    var saturday = parseFloat($("#ExerciseWeeklySaturday").val());
+	    var sunday = parseFloat($("#ExerciseWeeklySunday").val());
+	    if(isNaN(monday)) monday = 0;
+	    if(isNaN(tuesday)) tuesday = 0;
+	    if(isNaN(wednesday)) wednesday = 0;
+	    if(isNaN(thursday)) thursday = 0;
+	    if(isNaN(friday)) friday = 0;
+	    if(isNaN(saturday)) saturday = 0;
+	    if(isNaN(sunday)) sunday = 0;
+	    $("#ExerciseWeeklyTotal").val(monday + tuesday + wednesday + thursday + friday + saturday + sunday);
+	});
 });
 </script>
 
