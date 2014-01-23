@@ -86,15 +86,17 @@ form label.radio {
   .panel-item { width: 100%; }
 }
 
-.achievements .list-group {
+.achievements .table {
 	font-size: 110%;
 	box-shadow: none;
 }
-.achievements .list-group .list-group-item {
-	border:0px;
+
+.achievements .table td {
+	vertical-align: middle;
+	border: 0px;
 }
 
-.achievements .list-group .label {
+.achievements .table .label {
 	font-size:100%;
 }
 
