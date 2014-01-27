@@ -33,11 +33,12 @@ if ($newswidget != "") echo $newswidget;
 				</div>
 				<?php 
 					echo $this->Html->image(
-						'/example_module/simple_health_test/minigraph', 
+						'/img/ajax-loader.gif', 
 						array(
-							'alt' => 'My &lsquo;simple health&rsquo; scores over recent weeks',
+							'alt' => 'Loading',
 		    				'url' => array('action' => 'view_records'),
-							'class' => 'img-responsive'
+							'class' => 'img-responsive',
+							'id' => 'simplehealthtest-minigraph'
 						)
 					);
 				?>
@@ -77,3 +78,11 @@ if ($newswidget != "") echo $newswidget;
 		</div>
 	</div>
 </div>
+
+<script type="text/javascript">
+<!--
+$(document).ready(function() {
+	graphLoader('/example_module/simple_health_test/minigraph', 'My &lsquo;simple health&rsquo; scores over recent weeks', 'img-responsive', '#simplehealthtest-minigraph');
+});
+//-->
+</script>

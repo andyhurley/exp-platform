@@ -31,11 +31,12 @@ if ($newswidget != "") echo $newswidget;
 				</div>
 				<?php 
 					echo $this->Html->image(
-						'/healthy_eating_module/five_a_day/minigraph', 
+						'/img/ajax-loader.gif', 
 						array(
-							'alt' => 'My 5-a-day over recent weeks',
+							'alt' => 'Loading',
 		    				'url' => array('action' => 'view_records'),
-							'class' => 'img-responsive'
+							'class' => 'img-responsive',
+							'id' => 'fiveaday-minigraph'
 						)
 					);
 				?>
@@ -75,3 +76,11 @@ if ($newswidget != "") echo $newswidget;
 		</div>
 	</div>
 </div>
+
+<script type="text/javascript">
+<!--
+$(document).ready(function() {
+	graphLoader('/healthy_eating_module/five_a_day/minigraph', 'My 5-a-day over recent weeks', 'img-responsive', '#fiveaday-minigraph');
+});
+//-->
+</script>

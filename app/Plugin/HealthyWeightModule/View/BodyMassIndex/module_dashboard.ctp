@@ -29,11 +29,12 @@ if ($newswidget != "") echo $newswidget;
 				</div>
 				<?php 
 					echo $this->Html->image(
-						'/healthy_weight_module/body_mass_index/minigraph', 
+						'/img/ajax-loader.gif', 
 						array(
-							'alt' => 'My BMI over recent weeks',
+							'alt' => 'Loading',
 		    				'url' => array('action' => 'view_records'),
-							'class' => 'img-responsive'
+							'class' => 'img-responsive',
+							'id' => 'bodymassindex-minigraph'
 						)
 					);
 				?>
@@ -75,4 +76,11 @@ if ($newswidget != "") echo $newswidget;
 		</div>
 	</div>
 </div>
-						
+
+<script type="text/javascript">
+<!--
+$(document).ready(function() {
+	graphLoader('/healthy_weight_module/body_mass_index/minigraph', 'My BMI over recent weeks', 'img-responsive', '#bodymassindex-minigraph');
+});
+//-->
+</script>				

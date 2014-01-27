@@ -17,6 +17,13 @@ $(document).ready(function() {
 	$('a.info[title]').tooltip();
 	$('a.infohover[title]').tooltip();
 	
+	refreshMasonry();
+	
+	// Add a glyph icon to sidebar menus to make them look more like links
+	$(".list-group a.list-group-item").prepend("<span class='glyphicon glyphicon-chevron-right'></span>&nbsp;&nbsp;");
+});
+
+function refreshMasonry() {
 	$container = $('#panel-container');
 	$container.imagesLoaded( function() {
 		$container.masonry({
@@ -24,10 +31,7 @@ $(document).ready(function() {
 			columnWidth: '.panel-item'
 		});
 	});
-	
-	// Add a glyph icon to sidebar menus to make them look more like links
-	$(".list-group a.list-group-item").prepend("<span class='glyphicon glyphicon-chevron-right'></span>&nbsp;&nbsp;");
-});
+}
 
 function getImperialHeight(cms)
 {
@@ -134,4 +138,22 @@ function transposeTable(tableID) {
 	}
 	$(tableID).append(tb);
 	$(tableID).show();
+}
+
+
+function graphLoader(src, alt, classname, target) {
+	var img = $("<img />").attr({
+		'src': src,
+		'class': classname,
+		'alt': alt
+	})
+    .load(function() {
+        if (!this.complete || typeof this.naturalWidth == "undefined" || this.naturalWidth == 0) {
+            // Broken image - don't replace the ajax loader img
+            refreshMasonry();
+        } else {
+            $(target).replaceWith(img);
+        	refreshMasonry();
+        }
+    });
 }

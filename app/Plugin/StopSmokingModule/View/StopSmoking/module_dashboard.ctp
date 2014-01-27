@@ -30,11 +30,12 @@ if ($newswidget != "") echo $newswidget;
 				</div>
 				<?php 
 					echo $this->Html->image(
-						'/stop_smoking_module/stop_smoking/minigraph', 
+						'/img/ajax-loader.gif', 
 						array(
-							'alt' => 'My smoke free days over recent weeks',
+							'alt' => 'Loading',
 		    				'url' => array('action' => 'view_records'),
-							'class' => 'img-responsive'
+							'class' => 'img-responsive',
+							'id' => 'stopsmoking-minigraph'
 						)
 					);
 				?>
@@ -74,4 +75,11 @@ if ($newswidget != "") echo $newswidget;
 		</div>
 	</div>
 </div>
-						
+
+<script type="text/javascript">
+<!--
+$(document).ready(function() {
+	graphLoader('/stop_smoking_module/stop_smoking/minigraph', 'My smoke free days over recent weeks', 'img-responsive', '#stopsmoking-minigraph');
+});
+//-->
+</script>		

@@ -29,16 +29,17 @@ if ($newswidget != "") echo $newswidget;
 				<div class="caption">
 					<h4>My exercise over recent weeks</h4>
 				</div>
-			<?php 
-				echo $this->Html->image(
-					'/take_regular_exercise_module/exercise/minigraph', 
-					array(
-						'alt' => 'My Exercise over recent weeks',
-	    				'url' => array('action' => 'view_records'),
-						'class' => 'img-responsive'
-					)
-				);
-			?>
+				<?php 
+					echo $this->Html->image(
+						'/img/ajax-loader.gif', 
+						array(
+							'alt' => 'Loading',
+		    				'url' => array('action' => 'view_records'),
+							'class' => 'img-responsive',
+							'id' => 'exercise-minigraph'
+						)
+					);
+				?>
 		</div>
 		</div>
 		<div class="panel-footer">
@@ -75,3 +76,11 @@ if ($newswidget != "") echo $newswidget;
 		</div>
 	</div>
 </div>
+
+<script type="text/javascript">
+<!--
+$(document).ready(function() {
+	graphLoader('/take_regular_exercise_module/exercise/minigraph', 'My exercise over recent weeks', 'img-responsive', '#exercise-minigraph');
+});
+//-->
+</script>

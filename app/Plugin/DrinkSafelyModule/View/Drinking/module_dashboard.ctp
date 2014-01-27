@@ -31,11 +31,12 @@ if ($newswidget != "") echo $newswidget;
 				</div>
 				<?php 
 					echo $this->Html->image(
-						'/drink_safely_module/drinking/minigraph', 
+						'/img/ajax-loader.gif', 
 						array(
-							'alt' => 'My Units over recent weeks',
+							'alt' => 'Loading',
 		    				'url' => array('action' => 'view_records'),
-							'class' => 'img-responsive'
+							'class' => 'img-responsive',
+							'id' => 'drinking-minigraph'
 						)
 					);
 				?>
@@ -76,3 +77,11 @@ if ($newswidget != "") echo $newswidget;
 		</div>
 	</div>
 </div>
+<script type="text/javascript">
+<!--
+$(document).ready(function() {
+	graphLoader('/drink_safely_module/drinking/minigraph', 'My units over recent weeks', 'img-responsive', '#drinking-minigraph');
+});
+//-->
+</script>
+				
