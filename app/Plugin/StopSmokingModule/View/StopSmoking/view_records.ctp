@@ -3,8 +3,8 @@ $this->extend('/Modules/module_template');
 echo $this->Html->css('/stop_smoking_module/css/module.css', array('inline'=> false));
 
 $cellTemplates = array(
-		'<img src="/stop_smoking_module/img/smoking-face.png" alt="Smoked" class="img-responsive" /><span>S</span>',
-		'<img src="/stop_smoking_module/img/smiley-face.png" alt="Smoke-free" class="img-responsive" /><span>SF</span>'
+		'<img src="/stop_smoking_module/img/smiley-face.png" alt="Smoke-free" class="img-responsive" /><span>SF</span>',
+		'<img src="/stop_smoking_module/img/smoking-face.png" alt="Smoked" class="img-responsive" /><span>S</span>'
 );
 ?>
 
