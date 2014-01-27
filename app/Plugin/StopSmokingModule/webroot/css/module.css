@@ -8,12 +8,21 @@
 	text-align:center;
 }
 
-.weekly-entry td div {
-	margin:4px;
+.weekly-entry td .nosmoke {
+	margin:4px 4px 20px;
 }
 
-.weekly-entry tbody img {
-	margin:0px auto;
+.weekly-entry td .smoke {
+	margin:4px 4px 4px;
+}
+
+.weekly-entry tbody .nosmoke img {
+	margin:3px auto;
+	display:block;
+}
+
+.weekly-entry tbody .smoke img {
+	margin:3px auto -8px;
 	display:block;
 }
 

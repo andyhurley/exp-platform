@@ -67,50 +67,50 @@ if(isset($nextWeek)) {
 				$sunday = null;
 				$total = 0;
 			} ?>
-			<div class="nosmoke mon<?php if ($monday == 1) echo " nosmokeup"; ?>"><img src="/stop_smoking_module/img/no-smoking.png" alt="I did not Smoke"/><br/>
+			<div class="nosmoke mon<?php if ($monday == 1) echo " nosmokeup"; ?>"><img src="/stop_smoking_module/img/no-smoking.png" alt="I did not Smoke"/>
 				Did not Smoke</div>
-			<div class="smoke mon<?php if (!is_null($monday) && $monday == 0) echo " smokeup"; ?>"><img src="/stop_smoking_module/img/smoking.png" alt="I smoked"/><br/>
+			<div class="smoke mon<?php if (!is_null($monday) && $monday == 0) echo " smokeup"; ?>"><img src="/stop_smoking_module/img/smoking.png" alt="I smoked"/>
 				Smoked</div>
 			<?php echo $this->Form->hidden('StopSmokingWeekly.monday',array('label'=>false, 'value'=>$monday)); ?></td>
 		<td>
-			<div class="nosmoke tue<?php if ($tuesday == 1) echo " nosmokeup"; ?>"><img src="/stop_smoking_module/img/no-smoking.png" alt="I did not Smoke"/><br/>
+			<div class="nosmoke tue<?php if ($tuesday == 1) echo " nosmokeup"; ?>"><img src="/stop_smoking_module/img/no-smoking.png" alt="I did not Smoke"/>
 				Did not Smoke</div>
-			<div class="smoke tue<?php if (!is_null($tuesday) && $tuesday == 0) echo " smokeup"; ?>"><img src="/stop_smoking_module/img/smoking.png" alt="I smoked"/><br/>
+			<div class="smoke tue<?php if (!is_null($tuesday) && $tuesday == 0) echo " smokeup"; ?>"><img src="/stop_smoking_module/img/smoking.png" alt="I smoked"/>
 				Smoked</div>
 			<?php echo $this->Form->hidden('StopSmokingWeekly.tuesday',array('label'=>false, 'value'=>$tuesday)); ?>
 		</td>
 		<td>
-			<div class="nosmoke wed<?php if ($wednesday == 1) echo " nosmokeup"; ?>"><img src="/stop_smoking_module/img/no-smoking.png" alt="I did not Smoke"/><br/>
+			<div class="nosmoke wed<?php if ($wednesday == 1) echo " nosmokeup"; ?>"><img src="/stop_smoking_module/img/no-smoking.png" alt="I did not Smoke"/>
 				Did not Smoke</div>
-			<div class="smoke wed<?php if (!is_null($wednesday) && $wednesday == 0) echo " smokeup"; ?>"><img src="/stop_smoking_module/img/smoking.png" alt="I smoked"/><br/>
+			<div class="smoke wed<?php if (!is_null($wednesday) && $wednesday == 0) echo " smokeup"; ?>"><img src="/stop_smoking_module/img/smoking.png" alt="I smoked"/>
 				Smoked</div>
 			<?php echo $this->Form->hidden('StopSmokingWeekly.wednesday',array('label'=>false, 'value'=>$wednesday)); ?>
 		</td>
 		<td>
-			<div class="nosmoke thu<?php if ($thursday == 1) echo " nosmokeup"; ?>"><img src="/stop_smoking_module/img/no-smoking.png" alt="I did not Smoke"/><br/>
+			<div class="nosmoke thu<?php if ($thursday == 1) echo " nosmokeup"; ?>"><img src="/stop_smoking_module/img/no-smoking.png" alt="I did not Smoke"/>
 				Did not Smoke</div>
-			<div class="smoke thu<?php if (!is_null($thursday) && $thursday == 0) echo " smokeup"; ?>"><img src="/stop_smoking_module/img/smoking.png" alt="I smoked"/><br/>
+			<div class="smoke thu<?php if (!is_null($thursday) && $thursday == 0) echo " smokeup"; ?>"><img src="/stop_smoking_module/img/smoking.png" alt="I smoked"/>
 				Smoked</div>
 			<?php echo $this->Form->hidden('StopSmokingWeekly.thursday',array('label'=>false, 'value'=>$thursday)); ?>
 		</td>
 		<td>
-			<div class="nosmoke fri<?php if ($friday == 1) echo " nosmokeup"; ?>"><img src="/stop_smoking_module/img/no-smoking.png" alt="I did not Smoke"/><br/>
+			<div class="nosmoke fri<?php if ($friday == 1) echo " nosmokeup"; ?>"><img src="/stop_smoking_module/img/no-smoking.png" alt="I did not Smoke"/>
 				Did not Smoke</div>
-			<div class="smoke fri<?php if (!is_null($friday) && $friday == 0) echo " smokeup"; ?>"><img src="/stop_smoking_module/img/smoking.png" alt="I smoked"/><br/>
+			<div class="smoke fri<?php if (!is_null($friday) && $friday == 0) echo " smokeup"; ?>"><img src="/stop_smoking_module/img/smoking.png" alt="I smoked"/>
 				Smoked</div>
 			<?php echo $this->Form->hidden('StopSmokingWeekly.friday',array('label'=>false, 'value'=>$friday)); ?>
 		</td>
 		<td>
-			<div class="nosmoke sat<?php if ($saturday == 1) echo " nosmokeup"; ?>"><img src="/stop_smoking_module/img/no-smoking.png" alt="I did not Smoke"/><br/>
+			<div class="nosmoke sat<?php if ($saturday == 1) echo " nosmokeup"; ?>"><img src="/stop_smoking_module/img/no-smoking.png" alt="I did not Smoke"/>
 				Did not Smoke</div>
-			<div class="smoke sat<?php if (!is_null($saturday) && $saturday == 0) echo " smokeup"; ?>"><img src="/stop_smoking_module/img/smoking.png" alt="I smoked"/><br/>
+			<div class="smoke sat<?php if (!is_null($saturday) && $saturday == 0) echo " smokeup"; ?>"><img src="/stop_smoking_module/img/smoking.png" alt="I smoked"/>
 				Smoked</div>
 			<?php echo $this->Form->hidden('StopSmokingWeekly.saturday',array('label'=>false, 'value'=>$saturday)); ?>
 		</td>
 		<td>
-			<div class="nosmoke mon<?php if ($sunday == 1) echo " nosmokeup"; ?>"><img src="/stop_smoking_module/img/no-smoking.png" alt="I did not Smoke"/><br/>
+			<div class="nosmoke mon<?php if ($sunday == 1) echo " nosmokeup"; ?>"><img src="/stop_smoking_module/img/no-smoking.png" alt="I did not Smoke"/>
 				Did not Smoke</div>
-			<div class="smoke mon<?php if (!is_null($sunday) && $sunday == 0) echo " smokeup"; ?>"><img src="/stop_smoking_module/img/smoking.png" alt="I smoked"/><br/>
+			<div class="smoke mon<?php if (!is_null($sunday) && $sunday == 0) echo " smokeup"; ?>"><img src="/stop_smoking_module/img/smoking.png" alt="I smoked"/>
 				Smoked</div>
 			<?php echo $this->Form->hidden('StopSmokingWeekly.sunday',array('label'=>false, 'value'=>$sunday)); ?>
 		</td>
