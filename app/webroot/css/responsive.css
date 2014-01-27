@@ -7,4 +7,9 @@
 	.profile-link {
 		display: none;
 	}
+	
+	/* Data entry screen */
+	.week-commencing .date-control {
+		display:block;
+	}
 }

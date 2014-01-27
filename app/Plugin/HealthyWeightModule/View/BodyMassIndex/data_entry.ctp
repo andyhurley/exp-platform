@@ -1,7 +1,7 @@
 <?php $this->extend('/Modules/module_template'); ?>
 <h3 class="week-commencing"><?php 
 
-?>Week Commencing: <?php
+?>Week Commencing: <span class="date-control"><?php
 echo $this->Html->image(
 		'Actions-go-previous-view-icon.png',
 		array('alt' => 'Previous week',
@@ -21,7 +21,7 @@ if(isset($nextWeek)) {
 				  'title' => 'Go to next week'
 			)
 	);
-}?></h3>
+}?></span></h3>
 
 <p class="lead">Please enter your average weight for this week.</p>
 

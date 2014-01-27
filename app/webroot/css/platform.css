@@ -162,6 +162,10 @@ form label.radio {
 }
 
 /* Data entry screen */
+.week-commencing .date-control {
+	display:inline;
+}
+
 .week-commencing .previous, .week-commencing .next {
 	vertical-align:top;
 	margin:0 5px;

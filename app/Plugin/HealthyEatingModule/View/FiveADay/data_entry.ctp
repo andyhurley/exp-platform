@@ -1,7 +1,7 @@
 <?php $this->extend('/Modules/module_template'); ?>
 <h3 class="week-commencing"><?php 
 
-?>Week Commencing: <?php
+?>Week Commencing: <span class="date-control"><?php
 echo $this->Html->image(
 		'Actions-go-previous-view-icon.png',
 		array('alt' => 'Previous week',
@@ -21,7 +21,7 @@ if(isset($nextWeek)) {
 				  'title' => 'Go to next week'
 			)
 	);
-}?></h3>
+}?></span></h3>
 
 <p class="lead">How many portions of different fruit and vegetables did you eat this week? Enter 0 if you haven't eaten any portions of fruit or vegetables that day.
 		<a data-toggle="modal" href="#help" class="info" title="Click for more information on portion sizes">

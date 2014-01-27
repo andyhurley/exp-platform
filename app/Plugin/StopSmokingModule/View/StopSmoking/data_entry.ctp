@@ -3,7 +3,7 @@ echo $this->Html->css('/stop_smoking_module/css/module.css', array('inline' => f
 
 <h3 class="week-commencing"><?php 
 
-?>Week Commencing: <?php
+?>Week Commencing: <span class="date-control"><?php
 echo $this->Html->image(
 		'Actions-go-previous-view-icon.png',
 		array('alt' => 'Previous week',
@@ -23,7 +23,7 @@ if(isset($nextWeek)) {
 				  'title' => 'Go to next week'
 			)
 	);
-}?></h3>
+}?></span></h3>
 
 <p class="lead">How did you do this week? Click a picture on each day of the week to record whether or not that day was smoke free.</p>
 <?php echo $this->Form->create('ExampleModule.StopSmokingWeekly', array(
