@@ -1,5 +1,6 @@
 <h1 class="module-title"><?php echo $this->Html->image('/img/Categories-applications-system-icon.png', array('alt' => "Admin Panel icon", 'escape' => false, 'class'=> 'img-thumbnail'));?>
 Admin Panel</h1>
+<div class="clearfix"></div>
 <div class="row" id="panel-container">
 	<div class="col-md-6 panel-item">
 		<div class='panel panel-primary achievements'>
@@ -10,16 +11,18 @@ Admin Panel</h1>
 			</h3>
 		</div>
 		<div class="panel-body">
-			<ul class="list-group">
-  				<li class="list-group-item">
-					Number of registered users:
-					<span class="label label-primary pull-right"><?php echo $totalUsers; ?></span>
-				</li>
-				<li class="list-group-item">
-					Number of admin users:
-					<span class="label label-primary pull-right"><?php echo $totalAdminUsers; ?></span>
-				</li>
-			</ul>
+			<table class="table">
+				<tr>
+					<td>Number of registered users:</td>
+					<td><span class="label label-primary pull-right"><?php echo $totalUsers; ?></span>
+					</td>
+				</tr>
+				<tr>
+					<td>Number of admin users:</td>
+					<td><span class="label label-primary pull-right"><?php echo $totalAdminUsers; ?></span>
+					</td>
+				</tr>
+			</table>
 			<?php
 				echo $this->Html->link(__('Add new user <span class="glyphicon glyphicon-plus"></span>'), '/admin/users/add',array('class' => 'btn btn-success btn-md pull-right', 'target' => '_self', 'escape' => false)); 
 			?>
@@ -38,20 +41,23 @@ Admin Panel</h1>
 			</h3>
 		</div>
 		<div class="panel-body">
-			<ul class="list-group">
-  				<li class="list-group-item">
-					Number of active dashboard modules:
-					<span class="label label-primary pull-right"><?php echo count($activeModules); ?></span>
-				</li>
-				<li class="list-group-item">
-					Number of modules added to user dashboards:
-					<span class="label label-primary pull-right"><?php echo $totalModuleInstances; ?></span>
-				</li>
-				<li class="list-group-item">
-					Number of health data records submitted:
-					<span class="label label-primary pull-right"><?php echo $totalDataRecords; ?></span>
-				</li>
-			</ul>
+			<table class="table">
+				<tr>
+					<td>Number of active dashboard modules:</td>
+					<td><span class="label label-primary pull-right"><?php echo count($activeModules); ?></span>
+					</td>
+				</tr>
+				<tr>
+					<td>Number of modules added to user dashboards:</td>
+					<td><span class="label label-primary pull-right"><?php echo $totalModuleInstances; ?></span>
+					</td>
+				</tr>
+				<tr>
+					<td>Number of health data records submitted:</td>
+					<td><span class="label label-primary pull-right"><?php echo $totalDataRecords; ?></span>
+					</td>
+				</tr>
+			</table>
 			<?php 
 				echo $this->Html->link(__('Activate module <span class="glyphicon glyphicon-plus"></span>'), '/admin/modules/add',array('class' => 'btn btn-success btn-md pull-right', 'target' => '_self', 'escape' => false)); 
 			?>
@@ -70,12 +76,13 @@ Admin Panel</h1>
 			</h3>
 		</div>
 		<div class="panel-body">
-			<ul class="list-group">
-  				<li class="list-group-item">
-  					Number of news articles:
-					<span class="label label-primary pull-right"><?php echo $totalNews; ?></span>
-				</li>
-			</ul>
+			<table class="table">
+				<tr>
+					<td>Number of news articles:</td>
+					<td><span class="label label-primary pull-right"><?php echo $totalNews; ?></span>
+					</td>
+				</tr>
+			</table>
 			<?php 
 			if ($totalNews > 0) 
 			{

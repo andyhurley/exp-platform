@@ -1,7 +1,9 @@
 <h1 class="module-title"><?php echo $this->Html->image('/img/Actions-view-list-icons-icon.png', array('alt' => "Admin Panel - Modules icon", 'escape' => false, 'class'=> 'img-thumbnail'));?>
 Admin Panel - Modules</h1>
+<div class="clearfix"></div>
 <div class="row">
 <div class="col-md-9 col-md-push-3">
+	<div class="table-responsive">
 	<table class="table">
 	<thead>
 	<tr>
@@ -32,7 +34,7 @@ Admin Panel - Modules</h1>
 			} else {
 				echo count($module['ModuleUser']); 
 			}?>&nbsp;</td>
-		<td class="col-md-5">
+		<td class="col-md-5 actions">
 			<span class="btn-group btn-group-justified">
 			<?php echo $this->Html->link(__('Health data'), '/admin_panel/health_data/'. $module['Module']['id'], array('class' => 'btn btn-default')); ?>
 			<?php
@@ -48,6 +50,7 @@ Admin Panel - Modules</h1>
 <?php endforeach; ?>
 	</tbody>
 	</table>
+	</div>
 	<p>
 	<?php
 	echo $this->Paginator->counter(array(

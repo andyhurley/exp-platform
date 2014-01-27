@@ -252,3 +252,10 @@ form .submit input#cancel[type=submit] {
   color: #555555;
   background-color: #e7e7e7;
 }
+
+/* Admin area */
+
+/* Action buttons in tables */
+.actions .btn-group-justified {
+	display:block;
+}

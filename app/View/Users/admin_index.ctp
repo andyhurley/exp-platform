@@ -1,7 +1,9 @@
 <h1 class="module-title"><?php echo $this->Html->image('/img/Apps-system-users-icon.png', array('alt' => "Admin Panel icon", 'escape' => false, 'class'=> 'img-thumbnail'));?>
 Admin Panel - Users</h1>
+<div class="clearfix"></div>
 <div class="row">
 <div class="col-md-9 col-md-push-3">
+	<div class="table-responsive">
 	<table class="table">
 	<thead>
 	<tr>
@@ -21,7 +23,7 @@ Admin Panel - Users</h1>
 		<td><?php echo h($viewuser['User']['role']); ?>&nbsp;</td>
 		<td><?php echo h($viewuser['User']['created']); ?>&nbsp;</td>
 		<td><?php echo h(count($viewuser['ModuleUser'])); ?>&nbsp;</td>
-		<td>
+		<td class="actions">
 			<span class="btn-group btn-group-justified">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $viewuser['User']['id']), array('class' => 'btn btn-default')); ?>
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $viewuser['User']['id']), array('class' => 'btn btn-default')); ?>
@@ -32,6 +34,7 @@ Admin Panel - Users</h1>
 <?php endforeach; ?>
 	</tbody>
 	</table>
+	</div>
 	<p>
 	<?php
 	echo $this->Paginator->counter(array(
