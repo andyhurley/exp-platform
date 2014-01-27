@@ -11,22 +11,11 @@ if (empty($achievements)) {?>
 	</tr>
 	<tr>
 		<td>My total number of days achieving 5-a-day:</td>
-		<td><span class="label label-primary pull-right"> <?php 
-		if ($achievements['FiveADayAchievement']['total_days_healthy'] != 1) $s = "s";
-		else $s = "";
-		echo $achievements['FiveADayAchievement']['total_days_healthy'];
-		?> day<?php echo $s; ?>
-		</span></td>
+		<td><span class="label label-primary pull-right"><?php echo $achievements['FiveADayAchievement']['total_days_healthy'] . " day" .($achievements['FiveADayAchievement']['total_days_healthy'] != 1 ? 's' : ''); ?></span></td>
 	</tr>
 	<tr>
 		<td>My total weeks achieving an average of 5-a-day:</td>
-		<td><span class="label label-primary pull-right"> <?php 
-		if ($achievements['FiveADayAchievement']['total_full_weeks_healthy'] != 1) $s = "s";
-		else $s = "";
-		echo $achievements['FiveADayAchievement']['total_full_weeks_healthy'];?>
-				week<?php echo $s; ?>
-		</span>
-		</td>
+		<td><span class="label label-primary pull-right"><?php echo $achievements['FiveADayAchievement']['total_full_weeks_healthy'] . " week" .($achievements['FiveADayAchievement']['total_full_weeks_healthy'] != 1 ? 's' : ''); ?></span></td>
 	</tr>
 </table>
 <?php }?>
