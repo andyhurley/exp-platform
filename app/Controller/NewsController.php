@@ -85,7 +85,12 @@ class NewsController extends AppController {
 	public function admin_add() {
 		$this->redirectIfNotAdmin();
 		
-		if ($this->request->is('post')) {
+		if ($this->request->is('post') || $this->request->is('put')) {
+			// Was cancel clicked?
+			if (isset($this->request->data['cancel'])) {
+				$this->redirect(array('action' => 'index'));
+			}
+			
 			$this->News->create();
 			if ($this->News->save($this->request->data)) {
 				$this->Session->setFlash(__('The news has been saved'));
