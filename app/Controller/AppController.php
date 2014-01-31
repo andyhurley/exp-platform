@@ -82,12 +82,23 @@ class AppController extends Controller {
 		
 		$user = $this->Auth->user();
 		
+		// Redirect to profile record if the user does not have a valid profile saved
+		$controller = $this->request['controller'];
+		if(($user != null && $user['Profile']['user_id'] == null)
+				&& $controller != 'profile'
+				&& $controller != 'users'
+				&& $controller != 'motivation'
+				&& $controller != 'modules'
+				&& $controller != 'pages'
+				){
+			$this->Session->setFlash(__('You must complete and save your profile before proceeding'));
+			$this->redirect(array('plugin' => 'standard_profile_module', 'controller' => 'profile', 'action'=>'addProfile'));
+		}
+			
 		// Workaround, because menu-builder doesn't seem to like the automatic structure of our User model
 		// Could be that we're doing the authentication bit wrong, but this temporary fix can stand for now...
 		$user['User']['role'] = $user['role'];
 		$this->set(compact('user'));
-		
-		$role = $this->Auth->user('role');
 		
 		// Define the main and footer menus - only needs to be done the once, not when requestAction calls are processed.		
 		if (empty($this->request->params['requested'])) {

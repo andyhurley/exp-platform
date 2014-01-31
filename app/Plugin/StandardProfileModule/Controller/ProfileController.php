@@ -192,6 +192,10 @@ class ProfileController extends StandardProfileModuleAppController implements Mo
   					
   				$Email->send();
   	
+  				// Re-authenticate, as the user now has a profile associated with it
+  				$currentUser['User']['Profile'] = $this->request->data['Profile'];
+  				$this->Auth->login($currentUser['User']);
+  				
   				$this->redirect(array('action' => 'healthScore'));
   			} else {
   				$this->Session->setFlash(__('Your profile could not be saved. Please, try again.'));
