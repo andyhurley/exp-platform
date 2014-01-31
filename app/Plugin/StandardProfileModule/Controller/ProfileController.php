@@ -335,6 +335,126 @@ class ProfileController extends StandardProfileModuleAppController implements Mo
   		}
   	}
   	
+
+  	/**
+  	 * Exports a full set of profile data, but only for users who have 'allowed research'.
+  	 */
+  	public function admin_profile_export() {
+  		$this->redirectIfNotAdmin();
+
+  		$this->loadModel('User');
+  		$this->loadModel('StandardProfileModule.HealthScore');
+  		$this->loadModel('StandardProfileModule.GeneralHealth');
+  		$this->loadModel('StandardProfileModule.Equality');
+  	
+  		ini_set('max_execution_time', 600); //increase max_execution_time to 10 min if data set is very large
+  		$this->layout = 'ajax';
+  	
+  		//create a file
+  		$filename = "profile_export_".date("Y.m.d").".csv";
+  		$csv_file = fopen('php://output', 'w');
+  	
+  		header('Content-type: application/csv');
+  		header('Content-Disposition: attachment; filename="'.$filename.'"');
+
+  		$options['joins'] = array(
+  				array('table' => 'health_scores',
+  						'alias' => 'HealthScore',
+  						'type' => 'LEFT',
+  						'conditions' => array(
+  								'HealthScore.user_id = User.id',
+  						)
+  				),
+  				array('table' => 'profile_general_health',
+  						'alias' => 'GeneralHealth',
+  						'type' => 'LEFT',
+  						'conditions' => array(
+  								'GeneralHealth.user_id = User.id',
+  						)
+  				),
+  				array('table' => 'profile_equal_opps',
+  						'alias' => 'Equality',
+  						'type' => 'LEFT',
+  						'conditions' => array(
+  								'Equality.user_id = User.id',
+  						)
+  				)
+  		);
+  		
+  		$options['fields'] = array(
+  				'*'
+  		);
+  		
+  		$options['conditions'] = array(
+  				'Profile.allow_research' => 1
+  		);
+  		
+  		$results = $this->User->find('all', $options);
+  		
+  		// The column headings of your .csv file
+  		$header_row = array(
+  				"User ID",
+  				"Gender",
+  				"Date of birth",
+  				"Height (CM)",
+  				"Post code",
+  				"Allow research",
+  				"Health score",
+  				"General health",
+  				"Nervous",
+  				"Worry",
+  				"Little interest",
+  				"Feeling down",
+  				"Supervisor",
+  				"Occupation",
+  				"Sickness absence",
+  				"Sickness absence spells",
+  				"Work performance",
+  				"Disability",
+  				"Sexual orientation",
+  				"Ethnicity",
+  				"Religion",
+  				"Marital status"
+  		);
+  	
+  		fputcsv($csv_file,$header_row,',','"');
+  	
+  		// Each iteration of this while loop will be a row in your .csv file where each field corresponds to the heading of the column
+  		foreach($results as $result)
+  		{
+  			// Array indexes correspond to the field names in your db table(s)
+  			$row = array(
+  					$result['User']['id'],
+  					$result['Profile']['gender'],
+  					$result['Profile']['date_of_birth'],
+  					$result['Profile']['height_cm'],
+  					$result['Profile']['post_code'],
+  					$result['Profile']['allow_research'],
+  					$result['HealthScore']['score'],
+  					$result['GeneralHealth']['general_health'],
+  					$result['GeneralHealth']['nervous'],
+  					$result['GeneralHealth']['worrying'],
+  					$result['GeneralHealth']['little_interest'],
+  					$result['GeneralHealth']['feeling_down'],
+  					$result['GeneralHealth']['supervisor'],
+  					$result['GeneralHealth']['occupation'],
+  					$result['GeneralHealth']['sickness_absence'],
+  					$result['GeneralHealth']['sickness_absence_spells'],
+  					$result['GeneralHealth']['work_performance'],
+  					$result['Equality']['disability'],
+  					$result['Equality']['sexual_orientation'],
+  					$result['Equality']['ethnicity'],
+  					$result['Equality']['religion'],
+  					$result['Equality']['marital_status']
+  			);
+  			
+  			fputcsv($csv_file,$row,',','"');
+  		}
+  	
+  		fclose($csv_file);
+  		$this->render('/AdminPanel/export');
+  	}
+  	
   	/**
   	 * Handles the weekly data entry form for this module.
   	 * 

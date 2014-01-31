@@ -54,6 +54,7 @@ Admin Panel - Users</h1>
 		<?php echo $this->Html->link(__('New user'), array('action' => 'add'), array('class' => 'list-group-item')); ?>
 		<?php echo $this->Html->link(__('Comms export'), array('action' => 'comms_export'), array('class' => 'list-group-item')); ?>
 		<?php echo $this->Html->link(__('Full export'), array('action' => 'full_export'), array('class' => 'list-group-item')); ?>
+		<?php echo $this->Html->link(__('Profile export'), array('plugin' => 'standard_profile_module', 'controller' => 'profile', 'action' => 'profile_export'), array('class' => 'list-group-item')); ?>
 		<?php echo $this->Html->link(__('Admin panel'), '/admin_panel', array('class' => 'list-group-item')); ?>
 	</div>
 </div>

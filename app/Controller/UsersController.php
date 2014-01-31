@@ -365,7 +365,7 @@ class UsersController extends AppController {
 	}
 	
 	/**
-	 * Exports a full set of user data, including profile information and modules that have been added to the
+	 * Exports a full set of user data, including basic profile information and modules that have been added to the
 	 * user's dashboard.
 	 */
 	public function admin_full_export() {
