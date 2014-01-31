@@ -148,12 +148,7 @@ function graphLoader(src, alt, classname, target) {
 		'alt': alt
 	})
     .load(function() {
-        if (!this.complete || typeof this.naturalWidth == "undefined" || this.naturalWidth == 0) {
-            // Broken image - don't replace the ajax loader img
-            refreshMasonry();
-        } else {
-            $(target).replaceWith(img);
-        	refreshMasonry();
-        }
+        $(target).replaceWith(img);
+        refreshMasonry();
     });
 }
