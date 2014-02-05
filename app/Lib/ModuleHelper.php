@@ -21,13 +21,13 @@
  * @copyright     Copyright (c) It's All Nice (http://itsallnice.co.uk/)
  * @license       GPL v3 License (http://opensource.org/licenses/GPL-3.0)
  */
-class ModuleHelperFunctions {
+class ModuleHelper {
 	/**
 	 * Returns the week beginning date for the given date (starting on a Monday).
 	 *
 	 * @param string $date
 	 */
-	public function _getWeekBeginningDate($date) {
+	public static function _getWeekBeginningDate($date) {
 		$dateTime = strtotime("2:00 " . $date);
 		if(date('w',$dateTime) == '1') {
 			// It's Monday, so return the same date
@@ -49,7 +49,7 @@ class ModuleHelperFunctions {
 	 * @param array $targetLevels
 	 * @return array
 	 */
-	public function getMonthlyCalendarEntries($model = null, $userId = null, $year = null, $month = null, $targetLevels = null) {
+	public static function getMonthlyCalendarEntries($model = null, $userId = null, $year = null, $month = null, $targetLevels = null) {
 		// Use today's date if no date given.
 		if(is_null($month)) $month = gmdate("F");
 		if(is_null($year)) $year = gmdate("Y");
@@ -57,7 +57,7 @@ class ModuleHelperFunctions {
 		// Calculate the month number and week-beginning date for the first of the month
 		$monthnum = gmdate('n', strtotime("2:00 1 ".$month. " ".$year));
 		$monthStartDate = gmmktime(2,0,0,$monthnum,1,$year);
-		$monthWeekBeginning = $this->_getWeekBeginningDate(gmdate("Ymd",$monthStartDate));
+		$monthWeekBeginning = self::_getWeekBeginningDate(gmdate("Ymd",$monthStartDate));
 	
 		// Retrieve all the weekly entries between the start week and the last day of the month
 		$allEntries = $model->find('all',array(
@@ -110,8 +110,8 @@ class ModuleHelperFunctions {
 	 * @param number $healthyScore
 	 * @return number
 	 */
-	public function totalWeeksHealthyConsec($model = null, $user_id = null, $healthyScore = 0) {
-		$currentDate = date('Y-m-d',$this->_getWeekBeginningDate(date('Y-m-d')));
+	public static function totalWeeksHealthyConsec($model = null, $user_id = null, $healthyScore = 0) {
+		$currentDate = date('Y-m-d',self::_getWeekBeginningDate(date('Y-m-d')));
 		$expectedWeek = date('Y-m-d',strtotime("last week " . $currentDate));
 		
 		// Retrieve all the weekly entries between the start week and the last day of the month
@@ -142,7 +142,7 @@ class ModuleHelperFunctions {
 	/**
 	 * Searches the given array for matching key=>value pairs. Returns an array of results.
 	 */
-	public function search($array, $key, $value)
+	public static function search($array, $key, $value)
 	{
 		$results = array();
 	
@@ -152,7 +152,7 @@ class ModuleHelperFunctions {
 				$results[] = $array;
 	
 			foreach ($array as $subarray)
-				$results = array_merge($results, $this->search($subarray, $key, $value));
+				$results = array_merge($results, self::search($subarray, $key, $value));
 		}
 	
 		return $results;

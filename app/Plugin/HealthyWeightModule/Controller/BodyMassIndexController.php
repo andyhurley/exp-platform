@@ -21,6 +21,7 @@
  * @copyright     Copyright (c) It's All Nice (http://itsallnice.co.uk/)
  * @license       GPL v3 License (http://opensource.org/licenses/GPL-3.0)
  */
+App::uses('ModuleHelper', 'Lib');
 class BodyMassIndexController extends HealthyWeightModuleAppController implements ModulePlugin {
     public $helpers = array('Calendar', 'Cache');
 	public $components = array('RequestHandler');
@@ -259,7 +260,6 @@ class BodyMassIndexController extends HealthyWeightModuleAppController implement
   	 * ability to quickly make a new data entry.
   	 */
 	public function module_dashboard($year = null,$month = null) {
-  		$helper = new ModuleHelperFunctions();
   		$this->loadModel('HealthyWeightModule.BmiWeekly');
 		$this->loadModel('HealthyWeightModule.BmiAchievement');
 		$this->loadModel('HealthyWeightModule.BmiScreener');
@@ -275,7 +275,7 @@ class BodyMassIndexController extends HealthyWeightModuleAppController implement
 		
 		$monthnum = gmdate('n', strtotime("2:00 1 ".$month. " ".$year));
 		$monthStartDate = gmmktime(2,0,0,$monthnum,1,$year);
-		$monthWeekBeginning = $helper->_getWeekBeginningDate(gmdate("Ymd",$monthStartDate));
+		$monthWeekBeginning = ModuleHelper::_getWeekBeginningDate(gmdate("Ymd",$monthStartDate));
 		
   		// Get the current user
   		$userId = $this->Auth->user('id');
@@ -331,7 +331,6 @@ class BodyMassIndexController extends HealthyWeightModuleAppController implement
   	 * 'View Records' shows any entries that have been made in the module this month, when accessed by a logged-in user from their dashboard.
   	 */
 	public function view_records($year = null,$month = null) {
-  		$helper = new ModuleHelperFunctions();
   		$this->loadModel('HealthyWeightModule.BmiWeekly');
 
   		// Use today's date if no date given.
@@ -344,7 +343,7 @@ class BodyMassIndexController extends HealthyWeightModuleAppController implement
 		
 		$monthnum = gmdate('n', strtotime("2:00 1 ".$month. " ".$year));
 		$monthStartDate = gmmktime(2,0,0,$monthnum,1,$year);
-		$monthWeekBeginning = $helper->_getWeekBeginningDate(gmdate("Ymd",$monthStartDate));
+		$monthWeekBeginning = ModuleHelper::_getWeekBeginningDate(gmdate("Ymd",$monthStartDate));
 		
   		// Get the current user
   		$userId = $this->Auth->user('id');
@@ -404,8 +403,7 @@ class BodyMassIndexController extends HealthyWeightModuleAppController implement
   		if(is_null($date)) $date = gmdate("Ymd");
   	
   		// What is the week beginning (Monday) for the given date?
-  		$helper = new ModuleHelperFunctions();
-  		$weekBeginning = $helper->_getWeekBeginningDate($date);
+  		$weekBeginning = ModuleHelper::_getWeekBeginningDate($date);
   		$this->set('weekBeginning', $weekBeginning);
   		
   		$previousWeek = strtotime('-1 week', $weekBeginning);

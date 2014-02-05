@@ -22,6 +22,7 @@
  * @license       GPL v3 License (http://opensource.org/licenses/GPL-3.0)
  */
 App::uses('AppModel', 'Model');
+App::uses('ModuleHelper', 'Lib');
 /**
  * ExerciseAchievement Model
  *
@@ -120,12 +121,10 @@ class ExerciseAchievement extends AppModel {
 	 * @param int $user_id
 	 */
 	public function updateAchievements($user_id) {
-		$helper = new ModuleHelperFunctions();
-		
 		$bestWeekSoFar = $this->bestWeekSoFar($user_id);
 		$totalMinutes = $this->totalMinutes($user_id);
 		$healthyWeeks = $this->totalHealthyWeeks($user_id);
-		$totalConsecWeeks = $helper->totalWeeksHealthyConsec($this->ExerciseWeekly, $user_id, $this->healthyWeekScore);
+		$totalConsecWeeks = ModuleHelper::totalWeeksHealthyConsec($this->ExerciseWeekly, $user_id, $this->healthyWeekScore);
 		
 		$this->set('user_id', $user_id);
 		$this->set('best_week_so_far', $bestWeekSoFar);

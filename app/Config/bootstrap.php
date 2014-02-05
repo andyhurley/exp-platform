@@ -111,7 +111,7 @@ CakeLog::config('error', array(
  * Load any additional classes needed by the experimental platform
  */
 App::uses('ModulePlugin', 'Lib');
-App::uses('ModuleHelperFunctions', 'Lib');
+App::uses('ModuleHelper', 'Lib');
 
 /**
  * Use an insecure random number generator for OpenID because the default random number generator used (/dev/urandom)

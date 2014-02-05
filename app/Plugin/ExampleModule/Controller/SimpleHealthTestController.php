@@ -21,6 +21,7 @@
  * @copyright     Copyright (c) It's All Nice (http://itsallnice.co.uk/)
  * @license       GPL v3 License (http://opensource.org/licenses/GPL-3.0)
  */
+App::uses('ModuleHelper', 'Lib');
 class SimpleHealthTestController extends ExampleModuleAppController implements ModulePlugin {
 	public $helpers = array('Calendar', 'Cache');
 	public $components = array('RequestHandler');
@@ -246,7 +247,6 @@ class SimpleHealthTestController extends ExampleModuleAppController implements M
   	 * ability to quickly make a new data entry.
   	 */
 	public function module_dashboard($year = null,$month = null) {
-  		$helper = new ModuleHelperFunctions();
   		$this->loadModel('ExampleModule.SimpleHealthTestWeekly');
 		$this->loadModel('ExampleModule.SimpleHealthTestAchievement');
   		$this->loadModel('User');
@@ -264,7 +264,7 @@ class SimpleHealthTestController extends ExampleModuleAppController implements M
   		$targetLevels = array(7,0);
   		
   		// Calendar Related Items:
-  		$monthlyRecords = $helper->getMonthlyCalendarEntries($this->SimpleHealthTestWeekly, $userId, $year, $month, $targetLevels);
+  		$monthlyRecords = ModuleHelper::getMonthlyCalendarEntries($this->SimpleHealthTestWeekly, $userId, $year, $month, $targetLevels);
   		$this->set('records', $monthlyRecords);
 		$this->set('title_for_layout', 'My `' . $this->module_name() . '` Dashboard');
   	}
@@ -286,7 +286,6 @@ class SimpleHealthTestController extends ExampleModuleAppController implements M
   	 * 'View Records' shows any entries that have been made in the module this month, when accessed by a logged-in user from their dashboard.
   	 */
   	public function view_records($year = null,$month = null) {
-  		$helper = new ModuleHelperFunctions();
   		$this->loadModel('ExampleModule.SimpleHealthTestWeekly');
   		
   		// Use today's date if no date given.
@@ -302,7 +301,7 @@ class SimpleHealthTestController extends ExampleModuleAppController implements M
   		$targetLevels = array(7,0);
   		
   		// Calendar Related Items:
-  		$monthlyRecords = $helper->getMonthlyCalendarEntries($this->SimpleHealthTestWeekly, $userId, $year, $month, $targetLevels);
+  		$monthlyRecords = ModuleHelper::getMonthlyCalendarEntries($this->SimpleHealthTestWeekly, $userId, $year, $month, $targetLevels);
   		$this->set('records', $monthlyRecords);
 		$this->set('title_for_layout', 'My `' . $this->module_name() . '` monthly records for ' . ucfirst($month) . ' ' . $year);
   	}
@@ -322,8 +321,7 @@ class SimpleHealthTestController extends ExampleModuleAppController implements M
 		if(is_null($date)) $date = date("Ymd");
 
 		// What is the week beginning (Monday) for the given date?
-		$helper = new ModuleHelperFunctions();
-		$weekBeginning = $helper->_getWeekBeginningDate($date);
+		$weekBeginning = ModuleHelper::_getWeekBeginningDate($date);
 		$this->set('weekBeginning', $weekBeginning);
 		
 		$previousWeek = strtotime('-1 week', $weekBeginning);

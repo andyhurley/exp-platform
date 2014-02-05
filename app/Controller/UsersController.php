@@ -22,6 +22,7 @@
  * @license       GPL v3 License (http://opensource.org/licenses/GPL-3.0)
  */
 App::uses('AppController', 'Controller');
+App::uses('ModuleHelper', 'Lib');
 /**
  * Users Controller
  *
@@ -226,7 +227,6 @@ class UsersController extends AppController {
 			throw new NotFoundException(__('Invalid user'));
 		}
 		
-		$helper = new ModuleHelperFunctions();
 		$this->loadModel('Module');
 		
 		$moduleList = $this->Module->findAllByType('dashboard');
@@ -234,7 +234,7 @@ class UsersController extends AppController {
 			
 		// Add module list to data
 		foreach($moduleList as $module) {
-			if($helper->search($viewuser['ModuleUser'], 'module_id', $module['Module']['id'])) {
+			if(ModuleHelper::search($viewuser['ModuleUser'], 'module_id', $module['Module']['id'])) {
 				$userModules[] = $module['Module']['name'];
 			}
 		}
@@ -415,11 +415,9 @@ class UsersController extends AppController {
 					$result['Profile']['allow_research']
 			);
 			
-			$helper = new ModuleHelperFunctions();
-			
 			// Add module list to data
 			foreach($moduleList as $module) {
-				if($helper->search($result['ModuleUser'], 'module_id', $module['Module']['id'])) {
+				if(ModuleHelper::search($result['ModuleUser'], 'module_id', $module['Module']['id'])) {
 					$row[] = 'Y';
 				} else {
 					$row[] = 'N';
@@ -476,11 +474,9 @@ class UsersController extends AppController {
 					$result['Profile']['mobile_no'],
 			);
 				
-			$helper = new ModuleHelperFunctions();
-				
 			// Add module list to data
 			foreach($moduleList as $module) {
-				if($helper->search($result['ModuleUser'], 'module_id', $module['Module']['id'])) {
+				if(ModuleHelper::search($result['ModuleUser'], 'module_id', $module['Module']['id'])) {
 					$row[] = 'Y';
 				} else {
 					$row[] = 'N';

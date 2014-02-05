@@ -21,6 +21,7 @@
  * @copyright     Copyright (c) It's All Nice (http://itsallnice.co.uk/)
  * @license       GPL v3 License (http://opensource.org/licenses/GPL-3.0)
  */
+App::uses('ModuleHelper', 'Lib');
 class FiveADayController extends HealthyEatingModuleAppController implements ModulePlugin {
     public $helpers = array('Calendar', 'Cache');
 	public $components = array('RequestHandler');
@@ -238,7 +239,6 @@ class FiveADayController extends HealthyEatingModuleAppController implements Mod
   	 * ability to quickly make a new data entry.
   	 */
 	public function module_dashboard($year = null,$month = null) {
-  		$helper = new ModuleHelperFunctions();
   		$this->loadModel('HealthyEatingModule.FiveADayWeekly');
 		$this->loadModel('HealthyEatingModule.FiveADayAchievement');
   		$this->loadModel('User');
@@ -256,7 +256,7 @@ class FiveADayController extends HealthyEatingModuleAppController implements Mod
   		$targetLevels = array(5,0);
   		
   		// Calendar Related Items:
-  		$monthlyRecords = $helper->getMonthlyCalendarEntries($this->FiveADayWeekly, $userId, $year, $month, $targetLevels);
+  		$monthlyRecords = ModuleHelper::getMonthlyCalendarEntries($this->FiveADayWeekly, $userId, $year, $month, $targetLevels);
   		$this->set('records', $monthlyRecords);
 		$this->set('title_for_layout', 'My `' . $this->module_name() . '` Dashboard');
   	}
@@ -279,7 +279,6 @@ class FiveADayController extends HealthyEatingModuleAppController implements Mod
   	 * 'View Records' shows any entries that have been made in the module this month, when accessed by a logged-in user from their dashboard.
   	 */
 	public function view_records($year = null,$month = null) {
-  		$helper = new ModuleHelperFunctions();
   		$this->loadModel('HealthyEatingModule.FiveADayWeekly');
 
   		// Use today's date if no date given.
@@ -295,7 +294,7 @@ class FiveADayController extends HealthyEatingModuleAppController implements Mod
   		$targetLevels = array(5,0);
   		
   		// Calendar Related Items:
-  		$monthlyRecords = $helper->getMonthlyCalendarEntries($this->FiveADayWeekly, $userId, $year, $month, $targetLevels);
+  		$monthlyRecords = ModuleHelper::getMonthlyCalendarEntries($this->FiveADayWeekly, $userId, $year, $month, $targetLevels);
   		$this->set('records', $monthlyRecords);
 		$this->set('title_for_layout', 'My `' . ucwords($this->module_name()) . '` records for ' . ucwords($month) . ' ' . $year);
   	}
@@ -314,8 +313,7 @@ class FiveADayController extends HealthyEatingModuleAppController implements Mod
   		if(is_null($date)) $date = gmdate("Ymd");
   	
   		// What is the week beginning (Monday) for the given date?
-  		$helper = new ModuleHelperFunctions();
-  		$weekBeginning = $helper->_getWeekBeginningDate($date);
+  		$weekBeginning = ModuleHelper::_getWeekBeginningDate($date);
   		$this->set('weekBeginning', $weekBeginning);
   		
   		$previousWeek = strtotime('-1 week', $weekBeginning);

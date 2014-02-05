@@ -22,6 +22,7 @@
  * @license       GPL v3 License (http://opensource.org/licenses/GPL-3.0)
  */
 App::uses('AppModel', 'Model');
+App::uses('ModuleHelper', 'Lib');
 /**
  * StopSmokingAchievement Model
  *
@@ -109,12 +110,10 @@ class StopSmokingAchievement extends AppModel {
 	 * @param int $user_id
 	 */
 	public function updateAchievements($user_id) {
-		$helper = new ModuleHelperFunctions();
-		
 		$healthyDaysLastWeek = $this->healthyDaysLastWeek($user_id);
 		$totalDaysHealthy = $this->totalDaysHealthy($user_id);
 		$healthyWeeks = $this->totalHealthyWeeks($user_id);
-		$totalConsecWeeks = $helper->totalWeeksHealthyConsec($this->StopSmokingWeekly, $user_id, $this->healthyWeekScore);
+		$totalConsecWeeks = ModuleHelper::totalWeeksHealthyConsec($this->StopSmokingWeekly, $user_id, $this->healthyWeekScore);
 		
 		$this->set('user_id', $user_id);
 		$this->set('healthy_days_last_week', $healthyDaysLastWeek);

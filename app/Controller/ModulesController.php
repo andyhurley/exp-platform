@@ -22,6 +22,7 @@
  * @license       GPL v3 License (http://opensource.org/licenses/GPL-3.0)
  */
 App::uses('AppController', 'Controller');
+App::uses('ModuleHelper', 'Lib');
 /**
  * Modules Controller
  *
@@ -106,10 +107,9 @@ class ModulesController extends AppController {
 		$this->redirectIfNotAdmin();
 		
 		// Check that the given plugin/controller is able to be installed
-		$helper = new ModuleHelperFunctions();
 		$healthModuleList = $this->get_uninstalled_module_list();
 		
-		if(!($helper->search($healthModuleList, 'plugin', $plugin) && $helper->search($healthModuleList, 'controllerName', $controllerName))) {
+		if(!(ModuleHelper::search($healthModuleList, 'plugin', $plugin) && ModuleHelper::search($healthModuleList, 'controllerName', $controllerName))) {
 			throw new NotFoundException("The specified health module plugin was not found");
 			$this->set('title_for_layout', 'Health Module Plugin Not Found');
 		}
@@ -257,7 +257,6 @@ class ModulesController extends AppController {
 	private function get_uninstalled_module_list() {
 		$pluginList = CakePlugin::loaded();
 		
-		$helper = new ModuleHelperFunctions();
 		$moduleList = $this->Module->find('all');
 		$healthModuleList = array();
 		
@@ -267,7 +266,7 @@ class ModulesController extends AppController {
 			foreach($controllerList as $controller) {
 				$controllerName = str_replace ( "Controller" , "" , $controller );
 				App::import('Controller', $plugin.'.'.$controllerName);
-				if(in_array( "ModulePlugin", class_implements($controller)) && !$helper->search($moduleList, 'module_name', $plugin.'.'.$controllerName)) {
+				if(in_array( "ModulePlugin", class_implements($controller)) && !ModuleHelper::search($moduleList, 'module_name', $plugin.'.'.$controllerName)) {
 					$healthModuleList[] = array(
 							"plugin" => $plugin,
 							"controller" => $controller,

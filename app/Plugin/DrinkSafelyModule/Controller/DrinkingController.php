@@ -21,6 +21,8 @@
  * @copyright     Copyright (c) It's All Nice (http://itsallnice.co.uk/)
  * @license       GPL v3 License (http://opensource.org/licenses/GPL-3.0)
  */
+App::uses('ModuleHelper', 'Lib');
+
 class DrinkingController extends DrinkSafelyModuleAppController implements ModulePlugin {
     public $helpers = array('Calendar', 'Cache');
 	public $components = array('RequestHandler');
@@ -257,7 +259,6 @@ class DrinkingController extends DrinkSafelyModuleAppController implements Modul
   	 * ability to quickly make a new data entry.
   	 */
 	public function module_dashboard($year = null,$month = null) {
-  		$helper = new ModuleHelperFunctions();
   		$this->loadModel('DrinkSafelyModule.DrinkingWeekly');
 		$this->loadModel('DrinkSafelyModule.DrinkingAchievement');
   		$this->loadModel('User');
@@ -285,7 +286,7 @@ class DrinkingController extends DrinkSafelyModuleAppController implements Modul
   		}
   		
   		// Calendar Related Items:
-  		$monthlyRecords = $helper->getMonthlyCalendarEntries($this->DrinkingWeekly, $userId, $year, $month, $targetLevels);
+  		$monthlyRecords = ModuleHelper::getMonthlyCalendarEntries($this->DrinkingWeekly, $userId, $year, $month, $targetLevels);
   		$this->set('records', $monthlyRecords);
 		$this->set('title_for_layout', 'My `' . $this->module_name() . '` Dashboard');
   	}
@@ -318,7 +319,6 @@ class DrinkingController extends DrinkSafelyModuleAppController implements Modul
 		$gender = $this->User->data['Profile']['gender'];
 		$this->set('gender', $gender);
 		
-  		$helper = new ModuleHelperFunctions();
   		$this->loadModel('DrinkSafelyModule.DrinkingWeekly');
 
   		// Use today's date if no date given.
@@ -338,7 +338,7 @@ class DrinkingController extends DrinkSafelyModuleAppController implements Modul
   		}
   		
   		// Calendar Related Items:
-  		$monthlyRecords = $helper->getMonthlyCalendarEntries($this->DrinkingWeekly, $userId, $year, $month, $targetLevels);
+  		$monthlyRecords = ModuleHelper::getMonthlyCalendarEntries($this->DrinkingWeekly, $userId, $year, $month, $targetLevels);
   		$this->set('records', $monthlyRecords);
 		$this->set('title_for_layout', 'My `' . $this->module_name() . '` Monthly Records for ' . $month . ' ' . $year);
   	}
@@ -357,8 +357,7 @@ class DrinkingController extends DrinkSafelyModuleAppController implements Modul
   		if(is_null($date)) $date = gmdate("Ymd");
   	
   		// What is the week beginning (Monday) for the given date?
-  		$helper = new ModuleHelperFunctions();
-  		$weekBeginning = $helper->_getWeekBeginningDate($date);
+  		$weekBeginning = ModuleHelper::_getWeekBeginningDate($date);
   		$this->set('weekBeginning', $weekBeginning);
   		
   		$previousWeek = strtotime('-1 week', $weekBeginning);

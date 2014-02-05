@@ -22,6 +22,7 @@
  * @license       GPL v3 License (http://opensource.org/licenses/GPL-3.0)
  */
 App::uses('AppModel', 'Model');
+App::uses('ModuleHelper', 'Lib');
 /**
  * BMIAchievement Model
  *
@@ -176,9 +177,7 @@ class BmiAchievement extends AppModel {
 	 * @return number
 	 */
 	private function totalWeeksHealthyConsec($user_id = null) {
-		$helper = new ModuleHelperFunctions();
-		
-		$currentDate = date('Y-m-d',$helper->_getWeekBeginningDate(date('Y-m-d')));
+		$currentDate = date('Y-m-d',ModuleHelper::_getWeekBeginningDate(date('Y-m-d')));
 		$expectedWeek = date('Y-m-d',strtotime("last week " . $currentDate));
 	
 		// Retrieve all the weekly entries between the start week and the last day of the month

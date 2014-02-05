@@ -22,6 +22,7 @@
  * @license       GPL v3 License (http://opensource.org/licenses/GPL-3.0)
  */
 App::uses('AppModel', 'Model');
+App::uses('ModuleHelper', 'Lib');
 /**
  * ExerciseAchievement Model
  *
@@ -129,8 +130,6 @@ class DrinkingAchievement extends AppModel {
 	 * @param int $user_id
 	 */
 	public function updateAchievements($user_id,$gender) {
-		$helper = new ModuleHelperFunctions();
-		
 		$totalSensibleDays = $this->totalSensibleDays($user_id,$gender);
 		$totalExcessDays = $this->totalExcessDays($user_id,$gender);
 		$totalBingeDays = $this->totalBingeDays($user_id,$gender);
@@ -153,9 +152,7 @@ class DrinkingAchievement extends AppModel {
 	 * @return number
 	 */
 	private function totalWeeksNoBingeConsec($user_id = null, $gender = null) {
-		$helper = new ModuleHelperFunctions();
-		
-		$currentDate = date('Y-m-d',$helper->_getWeekBeginningDate(date('Y-m-d')));
+		$currentDate = date('Y-m-d',ModuleHelper::_getWeekBeginningDate(date('Y-m-d')));
 		$expectedWeek = $currentDate; //date('Y-m-d',strtotime("last week " . $currentDate));
 		
 		$healthyWeeks = $this->query("SELECT * FROM `drinking_weekly` WHERE user_id = " . $user_id
