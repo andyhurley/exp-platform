@@ -36,6 +36,17 @@ be done without these guys!
 * [Oxygen Icons](http://www.oxygen-icons.org/)
 * [Glyphicons](http://glyphicons.com/)
 
+## Installation
+
+These are only rough directions, as your configuration settings will be different to mine. Step 1 is the most important, as if CakePHP isn't set up and running correctly in your environment, then the experimental platform has no chance!
+
+1. Install and set up a copy of CakePHP on your favourite webserver. Check that you can get the example Cake project working in your environment.
+2. The experimental platform has been configured to run in an adjacent directory to CakePHP. Download the app directory from the GitHub repository, and place it next to your CakePHP directory.
+3. Configure your webserver to point directly to the /app directory for your chosen domain name.
+4. A database set up script can be found in the /DB Setup Scripts directory, called database-structure.sql. Create a database for the platform, then run this script to set up the necessary empty tables. You may also want to run the test-data.sql or extended-test-data.sql to set up some initial values for the health modules.
+5. Next, remove the .default part of the filenames from /app/config/core.php.default, /app/config/database.php.default and /app/config/email.php.default, and add your personal configuration settings to these files that will work best with your webserver and mailserver configuration. Don't forget to change the salt and cipherSeed settings in the core.php file.
+6. Open a browser, and head over to the domain name that you've told your webserver to listen to for the platform. You should now be seeing a shiny new experimental platform!
+
 ## License
 
 This program is free software: you can redistribute it and/or modify
