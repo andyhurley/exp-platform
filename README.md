@@ -47,6 +47,8 @@ These are only rough directions, as your configuration settings will be differen
 5. Next, remove the .default part of the filenames from /app/config/core.php.default, /app/config/database.php.default and /app/config/email.php.default, and add your personal configuration settings to these files that will work best with your webserver and mailserver configuration. Don't forget to change the salt and cipherSeed settings in the core.php file.
 6. Open a browser, and head over to the domain name that you've told your webserver to listen to for the platform. You should now be seeing a shiny new experimental platform!
 
+You can find 'one that we made earlier' at http://exp-platform.itsallnice-digital.co.uk/ - feel free to register an account there and have a look around.
+
 ## License
 
 This program is free software: you can redistribute it and/or modify
