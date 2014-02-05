@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (c) 2013 It's All Nice <http://itsallnice.co.uk/>
+ * Copyright (c) 2014 It's All Nice <http://itsallnice.co.uk/>
  *
  * This file is part of the Experimental Platform for Health Promotion.
  *
