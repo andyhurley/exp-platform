@@ -121,6 +121,7 @@ class UsersController extends AppController {
             $registeredUser = $this->User->findByEmail($email[0]);
             
             if(!empty($registeredUser)) {
+            	$registeredUser['User']['Profile'] = $registeredUser['Profile'];
             	$this->Auth->login($registeredUser['User']);
             	$this->redirect($this->Auth->redirect(array('action'=>'dashboard')));
             }
@@ -134,6 +135,7 @@ class UsersController extends AppController {
 				$this->Session->setFlash(__('Welcome! Your OpenID account has been linked to this website.'));
 				
 				$registeredUser = $this->User->findByEmail($email[0]);
+				$registeredUser['User']['Profile'] = $registeredUser['Profile'];
 				$this->Auth->login($registeredUser['User']);
 				$this->redirect(array('plugin' => 'standard_profile_module', 'controller' => 'profile', 'action'=>'addProfile'));
 			} else {
