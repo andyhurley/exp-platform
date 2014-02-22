@@ -19,7 +19,7 @@
 $cakeDescription = __d('cake_dev', 'Experimental Platform for Health Promotion');
 ?>
 <!DOCTYPE html>
-<html>
+<?php echo $this->Facebook->html(); ?>
 <head>
 	<?php echo $this->Html->charset(); ?>
 	<title>
@@ -109,6 +109,6 @@ $cakeDescription = __d('cake_dev', 'Experimental Platform for Health Promotion')
     	</nav>
 	</div>
 	<?php //echo $this->element('sql_dump'); ?>
-	
 </body>
+<?php echo $this->Facebook->init(); ?>
 </html>

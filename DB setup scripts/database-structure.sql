@@ -422,6 +422,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `email` varchar(50) DEFAULT NULL,
   `password` varchar(50) DEFAULT NULL,
+  `facebook_id` bigint(20) UNSIGNED NULL,
   `role` varchar(20) NOT NULL,
   `created` datetime DEFAULT NULL,
   `modified` datetime DEFAULT NULL,

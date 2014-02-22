@@ -145,6 +145,41 @@ class UsersController extends AppController {
 	}
 	
 	/**
+	 * Ensure that the email and role fields are set before the Facebook component saves the user data.
+	 */
+	function beforeFacebookSave(){
+		$this->Connect->authUser['User']['email'] = $this->Connect->user('email');
+		$this->Connect->authUser['User']['role'] = 'user';
+		return true; //Must return true or will not save.
+	}
+	
+	/**
+	 * Logic to happen after successful facebook login.
+	 */
+	function afterFacebookLogin(){
+		$registeredUser = $this->User->findByFacebookId($this->Connect->user('id'));
+		
+		// If the registered user exists, then this must be a previously registered user
+		// TODO: Check this logic, as it may not be needed now that the login is working correctly
+		if(!is_null($registeredUser)) {
+			// Sort out the Profile and continue
+			if (array_key_exists('Profile', $registeredUser)) {
+				$registeredUser['User']['Profile'] = $registeredUser['Profile'];
+				$this->Session->write('Auth.User', array_merge($this->Auth->user(), $registeredUser['User']));
+				$this->redirect($this->Auth->redirectUrl(array('action'=>'dashboard')));
+			} else {
+				$userProfile = $this->User->Profile->findByUserId($registeredUser['User']['id']);
+				$registeredUser['User']['Profile'] = $userProfile['Profile'];
+				$this->Session->write('Auth.User', array_merge($this->Auth->user(), $registeredUser['User']));
+				$this->redirect($this->Auth->redirectUrl(array('action'=>'dashboard')));
+			}
+		} else {
+			$this->Session->setFlash(__('Welcome! Your Facebook account has been linked to this website.'));
+			return $this->redirect($this->Auth->redirectUrl(array('plugin' => 'standard_profile_module', 'controller' => 'profile', 'action'=>'addProfile')));
+		}
+	}
+	
+	/**
 	 * Allows the visitor to request a new password, by entering their email address.
 	 */
 	public function password_reminder() {
@@ -190,7 +225,7 @@ class UsersController extends AppController {
 	
 	public function logout() {
 		$this->redirect($this->Auth->logout());
-	}	
+	}
 	
 /**
  * index method

@@ -19,7 +19,7 @@
 	?></li>
 	<li class="col-md-6"><?php
 		echo $this->Html->image('/img/facebook_128.png', array('alt' => "Login with Facebook", 'escape' => false, 'class'=> 'icon', 'url' => '#', 'style'=>'vertical-align:middle;',));
-		echo $this->Html->link('Login via Facebook (coming soon!)', '#')
+		echo $this->Facebook->login(array('perms' => 'email', 'redirect' => '/users/login', 'img' => 'connectwithfacebook.gif'));
 	?></li>
 </ul>
 </div>

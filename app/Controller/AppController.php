@@ -44,6 +44,7 @@ class AppController extends Controller {
 			'Html' => array('className' => 'BoostCake.BoostCakeHtml'),
 			'Form' => array('className' => 'BootstrapForm'),
 			'Paginator' => array('className' => 'BoostCake.BoostCakePaginator'),
+			'Facebook.Facebook',
 		);
 	
 	// Set the Site Name
@@ -53,8 +54,8 @@ class AppController extends Controller {
 	public $components = array(
 			'Session',
 			'Auth' => array(
-					'loginRedirect' => array('controller' => 'users', 'action' => 'dashboard'),
-					'logoutRedirect' => array('controller' => 'pages', 'action' => 'display', 'home'),
+					'loginRedirect' => array('plugin' => false, 'controller' => 'users', 'action' => 'dashboard'),
+					'logoutRedirect' => array('plugin' => false, 'controller' => 'pages', 'action' => 'display', 'home'),
 					'authError' => 'You&rsquo;ll need to login or register to continue',
 					'authenticate' => array(
 							'Form' => array(
@@ -62,7 +63,9 @@ class AppController extends Controller {
 			),
 			'Openid' => array(
 					'use_database' => false,
-					'accept_google_apps' => true)
+					'accept_google_apps' => true),
+			'Facebook.Connect' => array(
+					'model' => 'User')
 	);
 	
 	/**
@@ -84,7 +87,7 @@ class AppController extends Controller {
 		
 		// Redirect to profile record if the user does not have a valid profile saved
 		$controller = $this->request['controller'];
-		if(($user != null && $user['Profile']['user_id'] == null)
+		if(($user != null && (!isset($user['Profile']) || $user['Profile']['user_id'] == null))
 				&& $controller != 'profile'
 				&& $controller != 'users'
 				&& $controller != 'motivation'
