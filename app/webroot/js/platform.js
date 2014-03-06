@@ -23,6 +23,11 @@ $(document).ready(function() {
 		login('/users/login');
 	});
 	
+	$('#facebook-logout').click(function(event) {
+		event.preventDefault();
+		logout('/users/logout');
+	});
+	
 	refreshMasonry();
 	
 	// Add a glyph icon to sidebar menus to make them look more like links

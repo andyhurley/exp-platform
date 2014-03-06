@@ -103,6 +103,12 @@ class AppController extends Controller {
 		$user['User']['role'] = $user['role'];
 		$this->set(compact('user'));
 		
+		// Add Facebook flag to logout button if the user has logged in via Facebook
+		$facebookFlag = '';
+		if ($this->Connect->FB->getUser() != 0){
+			$facebookFlag = 'facebook-logout';
+		}
+		
 		// Define the main and footer menus - only needs to be done the once, not when requestAction calls are processed.		
 		if (empty($this->request->params['requested'])) {
 			$menu = array(
@@ -152,6 +158,7 @@ class AppController extends Controller {
 									'title' => 'Log Out',
 									'url' => '/users/logout',
 	                    			'permissions' => array('user','admin','super-admin'),
+									'id' => $facebookFlag
 							),
 							// Only non-logged in users can see this
 	               		 	array(
