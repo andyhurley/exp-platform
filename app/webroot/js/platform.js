@@ -17,6 +17,12 @@ $(document).ready(function() {
 	$('a.info[title]').tooltip();
 	$('a.infohover[title]').tooltip();
 	
+	// Set up Facebook links
+	$('#facebook-login').parent('a').click(function(event) {
+		event.preventDefault();
+		login('/users/login');
+	});
+	
 	refreshMasonry();
 	
 	// Add a glyph icon to sidebar menus to make them look more like links

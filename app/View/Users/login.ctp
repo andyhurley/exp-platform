@@ -14,12 +14,8 @@
 		echo $this->Html->link('Login via Yahoo', '/users/openid_login/yahoo')
 	?></li>
 	<li class="col-md-6"><?php
-		echo $this->Html->image('/img/twitter_128.png', array('alt' => "Login with Twitter", 'escape' => false, 'class'=> 'icon', 'url' => '#', 'style'=>'vertical-align:middle;',));
-		echo $this->Html->link('Login via Twitter (coming soon!)', '#')
-	?></li>
-	<li class="col-md-6"><?php
-		echo $this->Html->image('/img/facebook_128.png', array('alt' => "Login with Facebook", 'escape' => false, 'class'=> 'icon', 'url' => '#', 'style'=>'vertical-align:middle;',));
-		echo $this->Facebook->login(array('perms' => 'email', 'redirect' => '/users/login', 'img' => 'connectwithfacebook.gif'));
+		echo $this->Html->image('/img/facebook_128.png', array('alt' => "Login with Facebook", 'escape' => false, 'class'=> 'icon', 'id' => 'facebook-login', 'url' => '#', 'style'=>'vertical-align:middle;',));
+		echo $this->Facebook->login(array('id' => 'facebook-clickable', 'perms' => 'email', 'redirect' => '/users/login', 'img' => 'connectwithfacebook.gif'));
 	?></li>
 </ul>
 </div>
