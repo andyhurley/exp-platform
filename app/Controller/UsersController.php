@@ -160,19 +160,16 @@ class UsersController extends AppController {
 		$registeredUser = $this->User->findByFacebookId($this->Connect->user('id'));
 		
 		// If the registered user exists, then this must be a previously registered user
-		// TODO: Check this logic, as it may not be needed now that the login is working correctly
 		if(!is_null($registeredUser)) {
 			// Sort out the Profile and continue
 			if (array_key_exists('Profile', $registeredUser)) {
 				$registeredUser['User']['Profile'] = $registeredUser['Profile'];
-				$this->Session->write('Auth.User', array_merge($this->Auth->user(), $registeredUser['User']));
-				$this->redirect($this->Auth->redirectUrl(array('action'=>'dashboard')));
 			} else {
 				$userProfile = $this->User->Profile->findByUserId($registeredUser['User']['id']);
 				$registeredUser['User']['Profile'] = $userProfile['Profile'];
-				$this->Session->write('Auth.User', array_merge($this->Auth->user(), $registeredUser['User']));
-				$this->redirect($this->Auth->redirectUrl(array('action'=>'dashboard')));
 			}
+			$this->Session->write('Auth.User', array_merge($this->Auth->user(), $registeredUser['User']));
+			$this->redirect($this->Auth->redirectUrl(array('action'=>'dashboard')));
 		} else {
 			$this->Session->setFlash(__('Welcome! Your Facebook account has been linked to this website.'));
 			return $this->redirect($this->Auth->redirectUrl(array('plugin' => 'standard_profile_module', 'controller' => 'profile', 'action'=>'addProfile')));
@@ -224,6 +221,12 @@ class UsersController extends AppController {
 	}
 	
 	public function logout() {
+		if ($this->Connect->FB->getUser() != 0) {
+			//ditch FB data for safety
+			$this->Connect->FB->destroysession();
+			//hope its all gone with this
+			session_destroy();
+		}
 		$this->redirect($this->Auth->logout());
 	}
 	
