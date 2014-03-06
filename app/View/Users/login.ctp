@@ -2,8 +2,8 @@
 <h1>Login</h1>
 <div class="row">
 <div class="col-md-8">
-<h2>Sign in to this site with one of your existing social media accounts.</h2>
-<p class="lead">Click a button below to sign in using your social media details, or enter your email address and password in the panel.</p>
+<p class="lead">Sign in to this site with one of your existing social media accounts.</p>
+<p>Click a button below to sign in using your social media details, or enter your email address and password in the panel.</p>
 <ul class="list-inline">
 	<li class="col-md-6"><?php
 		echo $this->Html->image('/img/google_128.png', array('alt' => "Login with Google", 'escape' => false, 'class'=> 'icon', 'url' => '/users/openid_login/google', 'style'=>'vertical-align:middle;',));
