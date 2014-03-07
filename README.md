@@ -35,6 +35,7 @@ be done without these guys!
 * [AuthButtons](https://github.com/intridea/authbuttons)
 * [Oxygen Icons](http://www.oxygen-icons.org/)
 * [Glyphicons](http://glyphicons.com/)
+* [Masonry - cascading grid layout library](http://masonry.desandro.com/)
 
 ## Installation
 

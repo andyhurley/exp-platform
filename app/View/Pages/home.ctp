@@ -1,12 +1,12 @@
 <div class="jumbotron">
-  <h1>Experimental Platform for Health Promotion - version 0.7</h1>
+  <h1>Experimental Platform for Health Promotion - version 0.8</h1>
 	<p>This web-tool is an under-development 'experimental platform',
 		intended to provide a platform for the preliminary development and
 		testing of interactive health topic modules.</p>
 	<p>
 		<strong>Please note that this version has been classed as a 'beta'
 			release. This release is intended primarily for feedback on the
-			website, and any data you record may be deleted by future releases.</strong>
+			website, and any data you record may be deleted by future releases.  Please view the <a href="https://github.com/andyhurley/exp-platform/blob/master/CHANGELOG.md" target="_blank">changelog</a> for details of latest updates.</strong>
 	</p>
 	<p>
 		The initial platform has been based on the website developed for NHS
